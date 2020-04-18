@@ -1,0 +1,10 @@
+[user]
+	name = feedoom
+	email = qqdz3750@sina.com
+
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool

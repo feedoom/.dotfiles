@@ -1,0 +1,638 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.dotfiles/config/nvim/plugsettings.vim.html</title>
+<meta name="Generator" content="Vim/8.0">
+<meta name="plugin-version" content="vim8.1_v1">
+<meta name="syntax" content="none">
+<meta name="settings" content="number_lines,use_css,pre_wrap,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="colorscheme" content="one">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #afafaf; background-color: #000000; }
+body { font-family: monospace; color: #afafaf; background-color: #000000; }
+* { font-size: 1em; }
+.LineNr { color: #5f5f5f; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr">  1 </span>&quot;补全设置
+<span id="L2" class="LineNr">  2 </span>&quot;--
+<span id="L3" class="LineNr">  3 </span>&quot;== coc ----------------------------------
+<span id="L4" class="LineNr">  4 </span>&quot;--
+<span id="L5" class="LineNr">  5 </span>set completeopt=menu,menuone,noselect &quot;vim-dict 补全设置
+<span id="L6" class="LineNr">  6 </span>set complete=.,w,b,u,t
+<span id="L7" class="LineNr">  7 </span>&quot;inoremap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pumvisible() ? &quot;\&lt;C-y&gt;&lt;CR&gt;&quot; : &quot;\&lt;CR&gt;&quot;
+<span id="L8" class="LineNr">  8 </span>inoremap &lt;expr&gt; &lt;CR&gt; pumvisible() ? &quot;\&lt;C-y&gt;&quot; : &quot;\&lt;C-g&gt;u\&lt;CR&gt;&quot;
+<span id="L9" class="LineNr">  9 </span>silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+<span id="L10" class="LineNr"> 10 </span>let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh']
+<span id="L11" class="LineNr"> 11 </span>&quot; use &lt;tab&gt; for trigger completion and navigate to the next complete item
+<span id="L12" class="LineNr"> 12 </span>function! s:check_back_space() abort
+<span id="L13" class="LineNr"> 13 </span>        let col = col('.') - 1
+<span id="L14" class="LineNr"> 14 </span>        return !col || getline('.')[col - 1]=~ '\s'
+<span id="L15" class="LineNr"> 15 </span>endfunction
+<span id="L16" class="LineNr"> 16 </span>inoremap &lt;silent&gt;&lt;expr&gt; &lt;Tab&gt;
+<span id="L17" class="LineNr"> 17 </span>                        \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :
+<span id="L18" class="LineNr"> 18 </span>                        \ coc#expandableOrJumpable() ? &quot;\&lt;C-r&gt;=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\&lt;CR&gt;&quot; :
+<span id="L19" class="LineNr"> 19 </span>                        \ &lt;SID&gt;check_back_space() ? &quot;\&lt;Tab&gt;&quot; :
+<span id="L20" class="LineNr"> 20 </span>                        \ coc#refresh()
+<span id="L21" class="LineNr"> 21 </span>inoremap &lt;expr&gt; &lt;S-Tab&gt; pumvisible() ? &quot;\&lt;C-p&gt;&quot; : &quot;\&lt;S-Tab&gt;&quot;
+<span id="L22" class="LineNr"> 22 </span>function! s:check_back_space() abort
+<span id="L23" class="LineNr"> 23 </span>        let col = col('.') - 1
+<span id="L24" class="LineNr"> 24 </span>        return !col || getline('.')[col - 1]  =~# '\s'
+<span id="L25" class="LineNr"> 25 </span>endfunction
+<span id="L26" class="LineNr"> 26 </span>inoremap &lt;silent&gt;&lt;expr&gt; &lt;c-space&gt; coc#refresh()
+<span id="L27" class="LineNr"> 27 </span>let g:coc_snippet_next = '&lt;tab&gt;'
+<span id="L28" class="LineNr"> 28 </span>nnoremap &lt;silent&gt; &lt;leader&gt;ya :&lt;C-u&gt;CocList -A --normal yank&lt;cr&gt;
+<span id="L29" class="LineNr"> 29 </span>&quot;nmap tr :CocCommand explorer&lt;CR&gt;
+<span id="L30" class="LineNr"> 30 </span>nmap tr :CocCommand explorer&lt;CR&gt;
+<span id="L31" class="LineNr"> 31 </span>
+<span id="L32" class="LineNr"> 32 </span>
+<span id="L33" class="LineNr"> 33 </span>&quot;--
+<span id="L34" class="LineNr"> 34 </span>&quot;== fzf.vim ----------------------------------
+<span id="L35" class="LineNr"> 35 </span>&quot;--
+<span id="L36" class="LineNr"> 36 </span>&quot; 查找文件
+<span id="L37" class="LineNr"> 37 </span>noremap &lt;C-p&gt; :FZF&lt;CR&gt;
+<span id="L38" class="LineNr"> 38 </span>&quot; 查找文件内容
+<span id="L39" class="LineNr"> 39 </span>noremap &lt;C-f&gt; :Ag&lt;CR&gt;
+<span id="L40" class="LineNr"> 40 </span>&quot; 历史打开的文件
+<span id="L41" class="LineNr"> 41 </span>noremap &lt;C-s&gt; :MRU&lt;CR&gt;
+<span id="L42" class="LineNr"> 42 </span>&quot; 查找tag
+<span id="L43" class="LineNr"> 43 </span>noremap &lt;C-t&gt; :BTags&lt;CR&gt;
+<span id="L44" class="LineNr"> 44 </span>&quot; 跳转打开的文件
+<span id="L45" class="LineNr"> 45 </span>noremap &lt;C-b&gt; :Buffers&lt;CR&gt;
+<span id="L46" class="LineNr"> 46 </span>&quot; 预览每一行
+<span id="L47" class="LineNr"> 47 </span>&quot; noremap &lt;C-&gt; :LinesWithPreview&lt;CR&gt;
+<span id="L48" class="LineNr"> 48 </span>&quot; 历史命令
+<span id="L49" class="LineNr"> 49 </span>noremap &lt;C-h&gt; :History:&lt;CR&gt;
+<span id="L50" class="LineNr"> 50 </span>
+<span id="L51" class="LineNr"> 51 </span>autocmd! Filetype fzf
+<span id="L52" class="LineNr"> 52 </span>autocmd  Filetype fzf set laststatus=0 noruler
+<span id="L53" class="LineNr"> 53 </span>            \| autocmd BufLeave &lt;buffer&gt; set laststatus=2 ruler
+<span id="L54" class="LineNr"> 54 </span>
+<span id="L55" class="LineNr"> 55 </span>command! -bang -nargs=* Buffers
+<span id="L56" class="LineNr"> 56 </span>            \ call fzf#vim#buffers(
+<span id="L57" class="LineNr"> 57 </span>            \   '',
+<span id="L58" class="LineNr"> 58 </span>            \   &lt;bang&gt;0 ? fzf#vim#with_preview('up:60%')
+<span id="L59" class="LineNr"> 59 </span>            \           : fzf#vim#with_preview('right:0%', '?'),
+<span id="L60" class="LineNr"> 60 </span>            \   &lt;bang&gt;0)
+<span id="L61" class="LineNr"> 61 </span>
+<span id="L62" class="LineNr"> 62 </span>
+<span id="L63" class="LineNr"> 63 </span>command! -bang -nargs=* LinesWithPreview
+<span id="L64" class="LineNr"> 64 </span>            \ call fzf#vim#grep(
+<span id="L65" class="LineNr"> 65 </span>            \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+<span id="L66" class="LineNr"> 66 </span>            \   fzf#vim#with_preview({}, 'up:50%', '?'),
+<span id="L67" class="LineNr"> 67 </span>            \   1)
+<span id="L68" class="LineNr"> 68 </span>
+<span id="L69" class="LineNr"> 69 </span>command! -bang -nargs=* Ag
+<span id="L70" class="LineNr"> 70 </span>            \ call fzf#vim#ag(
+<span id="L71" class="LineNr"> 71 </span>            \   '',
+<span id="L72" class="LineNr"> 72 </span>            \   &lt;bang&gt;0 ? fzf#vim#with_preview('up:60%')
+<span id="L73" class="LineNr"> 73 </span>            \           : fzf#vim#with_preview('right:50%', '?'),
+<span id="L74" class="LineNr"> 74 </span>            \   &lt;bang&gt;0)
+<span id="L75" class="LineNr"> 75 </span>
+<span id="L76" class="LineNr"> 76 </span>command! -bang -nargs=* MRU call fzf#vim#history(fzf#vim#with_preview())
+<span id="L77" class="LineNr"> 77 </span>
+<span id="L78" class="LineNr"> 78 </span>command! -bang BTags
+<span id="L79" class="LineNr"> 79 </span>            \ call fzf#vim#buffer_tags('', {
+<span id="L80" class="LineNr"> 80 </span>            \     'down': '40%',
+<span id="L81" class="LineNr"> 81 </span>            \     'options': '--with-nth 1
+<span id="L82" class="LineNr"> 82 </span>            \                 --reverse
+<span id="L83" class="LineNr"> 83 </span>            \                 --prompt &quot;&gt; &quot;
+<span id="L84" class="LineNr"> 84 </span>            \                 --preview-window=&quot;70%&quot;
+<span id="L85" class="LineNr"> 85 </span>            \                 --preview &quot;
+<span id="L86" class="LineNr"> 86 </span>            \                     tail -n +\$(echo {3} | tr -d \&quot;;\\\&quot;\&quot;) {2} |
+<span id="L87" class="LineNr"> 87 </span>            \                     head -n 16&quot;'
+<span id="L88" class="LineNr"> 88 </span>            \ })
+<span id="L89" class="LineNr"> 89 </span>
+<span id="L90" class="LineNr"> 90 </span>
+<span id="L91" class="LineNr"> 91 </span>&quot;--
+<span id="L92" class="LineNr"> 92 </span>&quot;== rnvimr ----------------------------------
+<span id="L93" class="LineNr"> 93 </span>&quot;--
+<span id="L94" class="LineNr"> 94 </span>let g:rnvimr_ex_enable = 1
+<span id="L95" class="LineNr"> 95 </span>let g:rnvimr_pick_enable = 1
+<span id="L96" class="LineNr"> 96 </span>nnoremap &lt;silent&gt; ra :RnvimrSync&lt;CR&gt;:RnvimrToggle&lt;CR&gt;&lt;C-\&gt;&lt;C-n&gt;:RnvimrResize 0&lt;CR&gt;
+<span id="L97" class="LineNr"> 97 </span>let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+<span id="L98" class="LineNr"> 98 </span>
+<span id="L99" class="LineNr"> 99 </span>
+<span id="L100" class="LineNr">100 </span>&quot;--
+<span id="L101" class="LineNr">101 </span>&quot;== Far.vim ----------------------------------
+<span id="L102" class="LineNr">102 </span>&quot;--
+<span id="L103" class="LineNr">103 </span>&quot;noremap &lt;LEADER&gt;ff :F  **/*&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;
+<span id="L104" class="LineNr">104 </span>&quot;let g:far#mapping = {
+<span id="L105" class="LineNr">105 </span>        &quot;\ &quot;replace_undo&quot; : [&quot;l&quot;],
+<span id="L106" class="LineNr">106 </span>        &quot;\ }
+<span id="L107" class="LineNr">107 </span>
+<span id="L108" class="LineNr">108 </span>
+<span id="L109" class="LineNr">109 </span>&quot;==nerdtree
+<span id="L110" class="LineNr">110 </span>&quot;nmap tr :NERDTreeToggle&lt;CR&gt;    &quot; 设置目录树快捷键
+<span id="L111" class="LineNr">111 </span>&quot;通过 h、j、k、l 来移动光标
+<span id="L112" class="LineNr">112 </span>&quot;o 打开关闭文件或目录，如果想打开文件，必须光标移动到文件名
+<span id="L113" class="LineNr">113 </span>&quot;t 在标签页中打开
+<span id="L114" class="LineNr">114 </span>&quot;s 和 i 可以水平或纵向分割窗口打开文件
+<span id="L115" class="LineNr">115 </span>&quot;p 到上层目录
+<span id="L116" class="LineNr">116 </span>&quot;P 到根目录
+<span id="L117" class="LineNr">117 </span>&quot;K 到同目录第一个节点
+<span id="L118" class="LineNr">118 </span>&quot;P 到同目录最后一个节点
+<span id="L119" class="LineNr">119 </span>&quot;let NERDTreeMapOpenExpl = &quot;&quot;
+<span id="L120" class="LineNr">120 </span>&quot;let NERDTreeMapUpdir = &quot;&quot;
+<span id="L121" class="LineNr">121 </span>&quot;let NERDTreeMapUpdirKeepOpen = &quot;l&quot;
+<span id="L122" class="LineNr">122 </span>&quot;let NERDTreeMapOpenSplit = &quot;&quot;
+<span id="L123" class="LineNr">123 </span>&quot;let NERDTreeOpenVSplit = &quot;&quot;
+<span id="L124" class="LineNr">124 </span>&quot;let NERDTreeMapActivateNode = &quot;i&quot;
+<span id="L125" class="LineNr">125 </span>&quot;let NERDTreeMapOpenInTab = &quot;o&quot;
+<span id="L126" class="LineNr">126 </span>&quot;let NERDTreeMapPreview = &quot;&quot;
+<span id="L127" class="LineNr">127 </span>&quot;let NERDTreeMapCloseDir = &quot;n&quot;
+<span id="L128" class="LineNr">128 </span>&quot;let NERDTreeMapChangeRoot = &quot;y&quot;
+<span id="L129" class="LineNr">129 </span>&quot;nerdtreegit
+<span id="L130" class="LineNr">130 </span>&quot;let g:NERDTreeIndicatorMapCustom = {
+<span id="L131" class="LineNr">131 </span>    &quot;\ &quot;Modified&quot;  : &quot;✹&quot;,
+<span id="L132" class="LineNr">132 </span>    &quot;\ &quot;Staged&quot;    : &quot;✚&quot;,
+<span id="L133" class="LineNr">133 </span>    &quot;\ &quot;Untracked&quot; : &quot;✭&quot;,
+<span id="L134" class="LineNr">134 </span>    &quot;\ &quot;Renamed&quot;   : &quot;➜&quot;,
+<span id="L135" class="LineNr">135 </span>    &quot;\ &quot;Unmerged&quot;  : &quot;═&quot;,
+<span id="L136" class="LineNr">136 </span>    &quot;\ &quot;Deleted&quot;   : &quot;✖&quot;,
+<span id="L137" class="LineNr">137 </span>    &quot;\ &quot;Dirty&quot;     : &quot;✗&quot;,
+<span id="L138" class="LineNr">138 </span>    &quot;\ &quot;Clean&quot;     : &quot;✔︎&quot;,
+<span id="L139" class="LineNr">139 </span>    &quot;\ &quot;Unknown&quot;   : &quot;?&quot;
+<span id="L140" class="LineNr">140 </span>    &quot;\ }
+<span id="L141" class="LineNr">141 </span>
+<span id="L142" class="LineNr">142 </span>
+<span id="L143" class="LineNr">143 </span>&quot;==LeaderF
+<span id="L144" class="LineNr">144 </span>&quot;let g:Lf_WindowPosition = 'popup' &quot;窗口弹出
+<span id="L145" class="LineNr">145 </span>let g:Lf_PreviewInPopup = 1
+<span id="L146" class="LineNr">146 </span>&quot;let g:Lf_StlSeparator = { 'left': &quot;\ue0b0&quot;, 'right': &quot;\ue0b2&quot;, 'font': &quot;DejaVu Sans Mono for Powerline&quot; }
+<span id="L147" class="LineNr">147 </span>&quot;let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+<span id="L148" class="LineNr">148 </span>&quot;nnoremap &lt;leader&gt;f :LeaderfFile ~&lt;cr&gt;
+<span id="L149" class="LineNr">149 </span>&quot;&quot;let g:Lf_ShortcutF = '&lt;C-P&gt;' &quot;更改快捷键
+<span id="L150" class="LineNr">150 </span>&quot;highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
+<span id="L151" class="LineNr">151 </span>&quot;highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=202
+<span id="L152" class="LineNr">152 </span>&quot;noremap &lt;leader&gt;fb :&lt;C-U&gt;&lt;C-R&gt;=printf(&quot;Leaderf buffer %s&quot;, &quot;&quot;)&lt;CR&gt;&lt;CR&gt;
+<span id="L153" class="LineNr">153 </span>&quot;noremap &lt;leader&gt;fm :&lt;C-U&gt;&lt;C-R&gt;=printf(&quot;Leaderf mru %s&quot;, &quot;&quot;)&lt;CR&gt;&lt;CR&gt;
+<span id="L154" class="LineNr">154 </span>&quot;noremap &lt;leader&gt;ft :&lt;C-U&gt;&lt;C-R&gt;=printf(&quot;Leaderf bufTag %s&quot;, &quot;&quot;)&lt;CR&gt;&lt;CR&gt;
+<span id="L155" class="LineNr">155 </span>&quot;搜素当前buffer的代码
+<span id="L156" class="LineNr">156 </span>noremap &lt;c-f&gt; :&lt;C-U&gt;&lt;C-R&gt;=printf(&quot;Leaderf line %s&quot;, &quot;&quot;)&lt;CR&gt;&lt;CR&gt;
+<span id="L157" class="LineNr">157 </span>
+<span id="L158" class="LineNr">158 </span>
+<span id="L159" class="LineNr">159 </span>&quot;--
+<span id="L160" class="LineNr">160 </span>&quot;== ctrlsf ----------------------------------
+<span id="L161" class="LineNr">161 </span>&quot;--
+<span id="L162" class="LineNr">162 </span>noremap &lt;LEADER&gt;f :CtrlSF
+<span id="L163" class="LineNr">163 </span>let g:ctrlsf_auto_focus = {
+<span id="L164" class="LineNr">164 </span>    \ &quot;at&quot;: &quot;start&quot;
+<span id="L165" class="LineNr">165 </span>    \ }
+<span id="L166" class="LineNr">166 </span>
+<span id="L167" class="LineNr">167 </span>
+<span id="L168" class="LineNr">168 </span>&quot;--
+<span id="L169" class="LineNr">169 </span>&quot;== Vista ----------------------------------
+<span id="L170" class="LineNr">170 </span>&quot;--
+<span id="L171" class="LineNr">171 </span>noremap &lt;silent&gt; tg :Vista!!&lt;CR&gt;
+<span id="L172" class="LineNr">172 </span>let g:vista_icon_indent = [&quot;╰─▸ &quot;, &quot;├─▸ &quot;]
+<span id="L173" class="LineNr">173 </span>let g:vista_default_executive = 'ctags'
+<span id="L174" class="LineNr">174 </span>let g:vista_fzf_preview = ['right:50%']
+<span id="L175" class="LineNr">175 </span>let g:vista#renderer#enable_icon = 1
+<span id="L176" class="LineNr">176 </span>let g:vista#renderer#icons = {
+<span id="L177" class="LineNr">177 </span>\   &quot;function&quot;: &quot;\uf794&quot;,
+<span id="L178" class="LineNr">178 </span>\   &quot;variable&quot;: &quot;\uf71b&quot;,
+<span id="L179" class="LineNr">179 </span>\  }
+<span id="L180" class="LineNr">180 </span>function! NearestMethodOrFunction() abort
+<span id="L181" class="LineNr">181 </span>    return get(b:, 'vista_nearest_method_or_function', '')
+<span id="L182" class="LineNr">182 </span>endfunction
+<span id="L183" class="LineNr">183 </span>&quot;set statusline+=%{NearestMethodOrFunction()}
+<span id="L184" class="LineNr">184 </span>autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+<span id="L185" class="LineNr">185 </span>
+<span id="L186" class="LineNr">186 </span>
+<span id="L187" class="LineNr">187 </span>&quot;--
+<span id="L188" class="LineNr">188 </span>&quot;== undotree ----------------------------------
+<span id="L189" class="LineNr">189 </span>&quot;--
+<span id="L190" class="LineNr">190 </span>nnoremap un :UndotreeToggle&lt;cr&gt;
+<span id="L191" class="LineNr">191 </span>set undodir=~/.config/nvim/tmp/undo  &quot;记录在~/.undodir里
+<span id="L192" class="LineNr">192 </span>set undofile
+<span id="L193" class="LineNr">193 </span>let g:undotree_DiffAutoOpen = 1
+<span id="L194" class="LineNr">194 </span>let g:undotree_SetFocusWhenToggle = 1
+<span id="L195" class="LineNr">195 </span>let g:undotree_ShortIndicators = 1
+<span id="L196" class="LineNr">196 </span>let g:undotree_WindowLayout = 2
+<span id="L197" class="LineNr">197 </span>let g:undotree_DiffpanelHeight = 8
+<span id="L198" class="LineNr">198 </span>let g:undotree_SplitWidth = 24
+<span id="L199" class="LineNr">199 </span>function g:Undotree_CustomMap()
+<span id="L200" class="LineNr">200 </span>    nmap &lt;buffer&gt; u &lt;plug&gt;UndotreeNextState
+<span id="L201" class="LineNr">201 </span>    nmap &lt;buffer&gt; e &lt;plug&gt;UndotreePreviousState
+<span id="L202" class="LineNr">202 </span>    nmap &lt;buffer&gt; U 5&lt;plug&gt;UndotreeNextState
+<span id="L203" class="LineNr">203 </span>    nmap &lt;buffer&gt; E 5&lt;plug&gt;UndotreePreviousState
+<span id="L204" class="LineNr">204 </span>endfunc
+<span id="L205" class="LineNr">205 </span>
+<span id="L206" class="LineNr">206 </span>
+<span id="L207" class="LineNr">207 </span>&quot;--
+<span id="L208" class="LineNr">208 </span>&quot;== rainbow_parentheses ----------------------------------
+<span id="L209" class="LineNr">209 </span>&quot;--
+<span id="L210" class="LineNr">210 </span>let g:rbpt_colorpairs = [
+<span id="L211" class="LineNr">211 </span>    \ ['brown',       'RoyalBlue3'],
+<span id="L212" class="LineNr">212 </span>    \ ['Darkblue',    'SeaGreen3'],
+<span id="L213" class="LineNr">213 </span>    \ ['darkgray',    'DarkOrchid3'],
+<span id="L214" class="LineNr">214 </span>    \ ['darkgreen',   'firebrick3'],
+<span id="L215" class="LineNr">215 </span>    \ ['darkcyan',    'RoyalBlue3'],
+<span id="L216" class="LineNr">216 </span>    \ ['darkred',     'SeaGreen3'],
+<span id="L217" class="LineNr">217 </span>    \ ['darkmagenta', 'DarkOrchid3'],
+<span id="L218" class="LineNr">218 </span>    \ ['brown',       'firebrick3'],
+<span id="L219" class="LineNr">219 </span>    \ ['gray',        'RoyalBlue3'],
+<span id="L220" class="LineNr">220 </span>    \ ['darkmagenta', 'DarkOrchid3'],
+<span id="L221" class="LineNr">221 </span>    \ ['Darkblue',    'firebrick3'],
+<span id="L222" class="LineNr">222 </span>    \ ['darkgreen',   'RoyalBlue3'],
+<span id="L223" class="LineNr">223 </span>    \ ['darkcyan',    'SeaGreen3'],
+<span id="L224" class="LineNr">224 </span>    \ ['darkred',     'DarkOrchid3'],
+<span id="L225" class="LineNr">225 </span>    \ ['red',         'firebrick3'],
+<span id="L226" class="LineNr">226 </span>    \ ]
+<span id="L227" class="LineNr">227 </span>&quot; 不加入这行, 防止黑色括号出现, 很难识别
+<span id="L228" class="LineNr">228 </span>&quot; \ ['black',       'SeaGreen3'],
+<span id="L229" class="LineNr">229 </span>let g:rbpt_max = 16
+<span id="L230" class="LineNr">230 </span>let g:rbpt_loadcmd_toggle = 0
+<span id="L231" class="LineNr">231 </span>au VimEnter * RainbowParenthesesToggle
+<span id="L232" class="LineNr">232 </span>au Syntax * RainbowParenthesesLoadRound
+<span id="L233" class="LineNr">233 </span>au Syntax * RainbowParenthesesLoadSquare
+<span id="L234" class="LineNr">234 </span>au Syntax * RainbowParenthesesLoadBraces
+<span id="L235" class="LineNr">235 </span>
+<span id="L236" class="LineNr">236 </span>
+<span id="L237" class="LineNr">237 </span>&quot;--
+<span id="L238" class="LineNr">238 </span>&quot;== vim-easy-align ----------------------------------
+<span id="L239" class="LineNr">239 </span>&quot;--
+<span id="L240" class="LineNr">240 </span>vmap &lt;Leader&gt;a &lt;Plug&gt;(EasyAlign)
+<span id="L241" class="LineNr">241 </span>nmap &lt;Leader&gt;a &lt;Plug&gt;(EasyAlign)
+<span id="L242" class="LineNr">242 </span>if !exists('g:easy_align_delimiters')
+<span id="L243" class="LineNr">243 </span>  let g:easy_align_delimiters = {}
+<span id="L244" class="LineNr">244 </span>endif
+<span id="L245" class="LineNr">245 </span>let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+<span id="L246" class="LineNr">246 </span>
+<span id="L247" class="LineNr">247 </span>
+<span id="L248" class="LineNr">248 </span>&quot;--
+<span id="L249" class="LineNr">249 </span>&quot;== vim-matchup ----------------------------------
+<span id="L250" class="LineNr">250 </span>&quot;--
+<span id="L251" class="LineNr">251 </span>let g:loaded_matchit = 1
+<span id="L252" class="LineNr">252 </span>
+<span id="L253" class="LineNr">253 </span>
+<span id="L254" class="LineNr">254 </span>&quot;--
+<span id="L255" class="LineNr">255 </span>&quot;== indentLine ----------------------------------
+<span id="L256" class="LineNr">256 </span>&quot;--
+<span id="L257" class="LineNr">257 </span>let g:indentLine_char = '¦'  &quot;, '¦', '┆', '┊'
+<span id="L258" class="LineNr">258 </span>&quot;let g:indentLine_setColors = 0
+<span id="L259" class="LineNr">259 </span>let g:indentLine_color_term = 17
+<span id="L260" class="LineNr">260 </span>&quot;let g:indentLine_noConcealCursor = &quot;&quot;
+<span id="L261" class="LineNr">261 </span>let g:indentLine_bgcolor_gui = '#303030'
+<span id="L262" class="LineNr">262 </span>
+<span id="L263" class="LineNr">263 </span>
+<span id="L264" class="LineNr">264 </span>&quot;--
+<span id="L265" class="LineNr">265 </span>&quot;== easymotion ----------------------------------
+<span id="L266" class="LineNr">266 </span>&quot;--
+<span id="L267" class="LineNr">267 </span>&quot;两个字符
+<span id="L268" class="LineNr">268 </span>&quot;nmap ff &lt;Plug&gt;(easymotion-s2)
+<span id="L269" class="LineNr">269 </span>&quot;单个字符
+<span id="L270" class="LineNr">270 </span>nmap ff &lt;Plug&gt;(easymotion-bd-f)
+<span id="L271" class="LineNr">271 </span>&quot;移动到列
+<span id="L272" class="LineNr">272 </span>&quot;nmap s &lt;Plug&gt;(easymotion-bd-jk)
+<span id="L273" class="LineNr">273 </span>&quot;任意字符
+<span id="L274" class="LineNr">274 </span>nmap fff &lt;Plug&gt;(easymotion-sn)
+<span id="L275" class="LineNr">275 </span>&quot;/替换成easymotion
+<span id="L276" class="LineNr">276 </span>&quot;map  / &lt;Plug&gt;(easymotion-sn)
+<span id="L277" class="LineNr">277 </span>&quot;omap / &lt;Plug&gt;(easymotion-tn)
+<span id="L278" class="LineNr">278 </span>&quot;map  n &lt;Plug&gt;(easymotion-next)
+<span id="L279" class="LineNr">279 </span>&quot;map  N &lt;Plug&gt;(easymotion-prev)
+<span id="L280" class="LineNr">280 </span>
+<span id="L281" class="LineNr">281 </span>
+<span id="L282" class="LineNr">282 </span>&quot;--
+<span id="L283" class="LineNr">283 </span>&quot;== goyo ----------------------------------
+<span id="L284" class="LineNr">284 </span>&quot;--
+<span id="L285" class="LineNr">285 </span>map gy :Goyo&lt;CR&gt;
+<span id="L286" class="LineNr">286 </span>
+<span id="L287" class="LineNr">287 </span>
+<span id="L288" class="LineNr">288 </span>&quot;--
+<span id="L289" class="LineNr">289 </span>&quot;== vim-autoformat ----------------------------------
+<span id="L290" class="LineNr">290 </span>&quot;--
+<span id="L291" class="LineNr">291 </span>nnoremap &lt;leader&gt;fo :Autoformat&lt;CR&gt;
+<span id="L292" class="LineNr">292 </span>&quot;let g:formatdef_eslint = '&quot;SRC=eslint-temp-${RANDOM}.js; cat - &gt;$SRC; eslint --fix $SRC &gt;/dev/null 2&gt;&amp;1; cat $SRC | perl -pe \&quot;chomp if eof\&quot;; rm -f $SRC&quot;'
+<span id="L293" class="LineNr">293 </span>&quot;let g:formatters_javascript = ['eslint']
+<span id="L294" class="LineNr">294 </span>&quot;let g:formatdef_my_html = '&quot;html-beautify -s 2&quot;'
+<span id="L295" class="LineNr">295 </span>
+<span id="L296" class="LineNr">296 </span>
+<span id="L297" class="LineNr">297 </span>&quot;--
+<span id="L298" class="LineNr">298 </span>&quot;== vimagit ----------------------------------
+<span id="L299" class="LineNr">299 </span>&quot;--
+<span id="L300" class="LineNr">300 </span>cnoreabbrev gs Magit
+<span id="L301" class="LineNr">301 </span>
+<span id="L302" class="LineNr">302 </span>
+<span id="L303" class="LineNr">303 </span>&quot;--
+<span id="L304" class="LineNr">304 </span>&quot;== vim-git-log ----------------------------------
+<span id="L305" class="LineNr">305 </span>&quot;--
+<span id="L306" class="LineNr">306 </span>cnoreabbrev gl GitLog
+<span id="L307" class="LineNr">307 </span>
+<span id="L308" class="LineNr">308 </span>
+<span id="L309" class="LineNr">309 </span>&quot;==ale
+<span id="L310" class="LineNr">310 </span>&quot;始终开启标志列
+<span id="L311" class="LineNr">311 </span>&quot;let g:ale_sign_column_always = 1
+<span id="L312" class="LineNr">312 </span>&quot;let g:ale_set_highlights = 0
+<span id="L313" class="LineNr">313 </span>&quot;&quot;自定义error和warning图标
+<span id="L314" class="LineNr">314 </span>&quot;let g:ale_sign_error = '✗'
+<span id="L315" class="LineNr">315 </span>&quot;let g:ale_sign_warning = '⚡'
+<span id="L316" class="LineNr">316 </span>&quot;&quot;在vim自带的状态栏中整合ale
+<span id="L317" class="LineNr">317 </span>&quot;let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+<span id="L318" class="LineNr">318 </span>&quot;&quot;显示Linter名称,出错或警告等相关信息
+<span id="L319" class="LineNr">319 </span>&quot;let g:ale_echo_msg_error_str = 'E'
+<span id="L320" class="LineNr">320 </span>&quot;let g:ale_echo_msg_warning_str = 'W'
+<span id="L321" class="LineNr">321 </span>&quot;let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+<span id="L322" class="LineNr">322 </span>&quot;&quot;普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+<span id="L323" class="LineNr">323 </span>&quot;nmap sp &lt;Plug&gt;(ale_previous_wrap)
+<span id="L324" class="LineNr">324 </span>&quot;nmap sn &lt;Plug&gt;(ale_next_wrap)
+<span id="L325" class="LineNr">325 </span>&quot;&quot;&lt;Leader&gt;s触发/关闭语法检查
+<span id="L326" class="LineNr">326 </span>&quot;nmap &lt;Leader&gt;s :ALEToggle&lt;CR&gt;
+<span id="L327" class="LineNr">327 </span>&quot;&quot;&lt;Leader&gt;d查看错误或警告的详细信息
+<span id="L328" class="LineNr">328 </span>&quot;nmap &lt;Leader&gt;d :ALEDetail&lt;CR&gt;
+<span id="L329" class="LineNr">329 </span>
+<span id="L330" class="LineNr">330 </span>
+<span id="L331" class="LineNr">331 </span>&quot;--
+<span id="L332" class="LineNr">332 </span>&quot;== Colorizer ----------------------------------
+<span id="L333" class="LineNr">333 </span>&quot;--
+<span id="L334" class="LineNr">334 </span>let g:colorizer_syntax = 1
+<span id="L335" class="LineNr">335 </span>
+<span id="L336" class="LineNr">336 </span>
+<span id="L337" class="LineNr">337 </span>&quot;--
+<span id="L338" class="LineNr">338 </span>&quot;== emmet-vim ----------------------------------
+<span id="L339" class="LineNr">339 </span>&quot;--
+<span id="L340" class="LineNr">340 </span>&quot;let g:user_emmet_settings = {
+<span id="L341" class="LineNr">341 </span>&quot;            \ 'javascript.jsx': {
+<span id="L342" class="LineNr">342 </span>&quot;            \ 'extends' : 'jsx',
+<span id="L343" class="LineNr">343 </span>&quot;            \ },
+<span id="L344" class="LineNr">344 </span>&quot;            \}
+<span id="L345" class="LineNr">345 </span>let g:user_emmet_leader_key = ','
+<span id="L346" class="LineNr">346 </span>
+<span id="L347" class="LineNr">347 </span>
+<span id="L348" class="LineNr">348 </span>&quot;--
+<span id="L349" class="LineNr">349 </span>&quot;== MatchTagAlways ----------------------------------
+<span id="L350" class="LineNr">350 </span>&quot;--
+<span id="L351" class="LineNr">351 </span>let g:mta_filetypes = {
+<span id="L352" class="LineNr">352 </span>    \ 'html' : 1,
+<span id="L353" class="LineNr">353 </span>    \ 'xhtml' : 1,
+<span id="L354" class="LineNr">354 </span>    \ 'xml' : 1,
+<span id="L355" class="LineNr">355 </span>    \ 'jinja' : 1,
+<span id="L356" class="LineNr">356 </span>    \}
+<span id="L357" class="LineNr">357 </span>&quot;改变颜色
+<span id="L358" class="LineNr">358 </span>&quot;let g:mta_set_default_matchtag_color=0
+<span id="L359" class="LineNr">359 </span>&quot;let g:mta_use_matchparen_group = 0
+<span id="L360" class="LineNr">360 </span>&quot;highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+<span id="L361" class="LineNr">361 </span>
+<span id="L362" class="LineNr">362 </span>
+<span id="L363" class="LineNr">363 </span>&quot;--
+<span id="L364" class="LineNr">364 </span>&quot;== MarkdownPreview ----------------------------------
+<span id="L365" class="LineNr">365 </span>&quot;--
+<span id="L366" class="LineNr">366 </span>let g:mkdp_auto_start = 0
+<span id="L367" class="LineNr">367 </span>let g:mkdp_auto_close = 1
+<span id="L368" class="LineNr">368 </span>let g:mkdp_refresh_slow = 0
+<span id="L369" class="LineNr">369 </span>let g:mkdp_command_for_global = 0
+<span id="L370" class="LineNr">370 </span>let g:mkdp_open_to_the_world = 0
+<span id="L371" class="LineNr">371 </span>let g:mkdp_open_ip = ''
+<span id="L372" class="LineNr">372 </span>let g:mkdp_echo_preview_url = 0
+<span id="L373" class="LineNr">373 </span>let g:mkdp_browserfunc = ''
+<span id="L374" class="LineNr">374 </span>let g:mkdp_preview_options = {
+<span id="L375" class="LineNr">375 </span>            \ 'mkit': {},
+<span id="L376" class="LineNr">376 </span>            \ 'katex': {},
+<span id="L377" class="LineNr">377 </span>            \ 'uml': {},
+<span id="L378" class="LineNr">378 </span>            \ 'maid': {},
+<span id="L379" class="LineNr">379 </span>            \ 'disable_sync_scroll': 0,
+<span id="L380" class="LineNr">380 </span>            \ 'sync_scroll_type': 'middle',
+<span id="L381" class="LineNr">381 </span>            \ 'hide_yaml_meta': 1
+<span id="L382" class="LineNr">382 </span>            \ }
+<span id="L383" class="LineNr">383 </span>let g:mkdp_markdown_css = ''
+<span id="L384" class="LineNr">384 </span>let g:mkdp_highlight_css = ''
+<span id="L385" class="LineNr">385 </span>let g:mkdp_port = ''
+<span id="L386" class="LineNr">386 </span>let g:mkdp_page_title = '「${name}」'
+<span id="L387" class="LineNr">387 </span>
+<span id="L388" class="LineNr">388 </span>
+<span id="L389" class="LineNr">389 </span>&quot;--
+<span id="L390" class="LineNr">390 </span>&quot;== vim-table-mode ----------------------------------
+<span id="L391" class="LineNr">391 </span>&quot;--
+<span id="L392" class="LineNr">392 </span>noremap &lt;LEADER&gt;tm :TableModeToggle&lt;CR&gt;
+<span id="L393" class="LineNr">393 </span>&quot;let g:table_mode_disable_mappings = 1
+<span id="L394" class="LineNr">394 </span>&quot;let g:table_mode_cell_text_object_i_map = 'k&lt;Bar&gt;'
+<span id="L395" class="LineNr">395 </span>&quot;let g:table_mode_delimiter = ' '
+<span id="L396" class="LineNr">396 </span>let g:table_mode_corner='|'
+<span id="L397" class="LineNr">397 </span>function! s:isAtStartOfLine(mapping)
+<span id="L398" class="LineNr">398 </span>  let text_before_cursor = getline('.')[0 : col('.')-1]
+<span id="L399" class="LineNr">399 </span>  let mapping_pattern = '\V' . escape(a:mapping, '\')
+<span id="L400" class="LineNr">400 </span>  let comment_pattern = '\V' . escape(substitute(&amp;l:commentstring, '%s.*$', '', ''), '\')
+<span id="L401" class="LineNr">401 </span>  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+<span id="L402" class="LineNr">402 </span>endfunction
+<span id="L403" class="LineNr">403 </span>
+<span id="L404" class="LineNr">404 </span>inoreabbrev &lt;expr&gt; &lt;bar&gt;&lt;bar&gt;
+<span id="L405" class="LineNr">405 </span>          \ &lt;SID&gt;isAtStartOfLine('\|\|') ?
+<span id="L406" class="LineNr">406 </span>          \ '&lt;c-o&gt;:TableModeEnable&lt;cr&gt;&lt;bar&gt;&lt;space&gt;&lt;bar&gt;&lt;left&gt;&lt;left&gt;' : '&lt;bar&gt;&lt;bar&gt;'
+<span id="L407" class="LineNr">407 </span>inoreabbrev &lt;expr&gt; __
+<span id="L408" class="LineNr">408 </span>          \ &lt;SID&gt;isAtStartOfLine('__') ?
+<span id="L409" class="LineNr">409 </span>          \ '&lt;c-o&gt;:silent! TableModeDisable&lt;cr&gt;' : '__'
+<span id="L410" class="LineNr">410 </span>
+<span id="L411" class="LineNr">411 </span>
+<span id="L412" class="LineNr">412 </span>&quot;--
+<span id="L413" class="LineNr">413 </span>&quot;== dict-vim ----------------------------------
+<span id="L414" class="LineNr">414 </span>&quot;--
+<span id="L415" class="LineNr">415 </span>cnoreabbrev trans DictW
+<span id="L416" class="LineNr">416 </span>nmap  &lt;Leader&gt;ddddd &lt;Plug&gt;DictSearch
+<span id="L417" class="LineNr">417 </span>vmap  &lt;Leader&gt;ddddd &lt;Plug&gt;DictVSearch
+<span id="L418" class="LineNr">418 </span>nmap  &lt;Leader&gt;ttttt &lt;Plug&gt;DictWSearch
+<span id="L419" class="LineNr">419 </span>vmap  &lt;Leader&gt;t &lt;Plug&gt;DictWVSearch
+<span id="L420" class="LineNr">420 </span>nmap  &lt;Leader&gt;rrrrr &lt;Plug&gt;DictRSearch
+<span id="L421" class="LineNr">421 </span>vmap  &lt;Leader&gt;r &lt;Plug&gt;DictRVSearch
+<span id="L422" class="LineNr">422 </span>
+<span id="L423" class="LineNr">423 </span>
+<span id="L424" class="LineNr">424 </span>&quot;--
+<span id="L425" class="LineNr">425 </span>&quot;== vim-translator ----------------------------------
+<span id="L426" class="LineNr">426 </span>&quot;--
+<span id="L427" class="LineNr">427 </span>&quot;nmap  &lt;Leader&gt;t &lt;Plug&gt;Translate
+<span id="L428" class="LineNr">428 </span>&quot;vmap  &lt;Leader&gt;t &lt;Plug&gt;TranslateV
+<span id="L429" class="LineNr">429 </span>&quot; Display translation in a window
+<span id="L430" class="LineNr">430 </span>nmap  &lt;Leader&gt;t &lt;Plug&gt;TranslateW
+<span id="L431" class="LineNr">431 </span>vmap  &lt;Leader&gt;wwwww &lt;Plug&gt;TranslateWV
+<span id="L432" class="LineNr">432 </span>&quot; Replace the text with translation
+<span id="L433" class="LineNr">433 </span>nmap  &lt;Leader&gt;r &lt;Plug&gt;TranslateR
+<span id="L434" class="LineNr">434 </span>vmap  &lt;Leader&gt;rrrrr &lt;Plug&gt;TranslateRV
+<span id="L435" class="LineNr">435 </span>&quot;hi def link TranslatorQuery             Identifier
+<span id="L436" class="LineNr">436 </span>&quot;hi def link TranslatorPhonetic          Type
+<span id="L437" class="LineNr">437 </span>&quot;hi def link TranslatorExplain           Statement
+<span id="L438" class="LineNr">438 </span>&quot;hi def link TranslatorDelimiter         Special
+<span id="L439" class="LineNr">439 </span>
+<span id="L440" class="LineNr">440 </span>
+<span id="L441" class="LineNr">441 </span>&quot;--
+<span id="L442" class="LineNr">442 </span>&quot;== polyglot ----------------------------------
+<span id="L443" class="LineNr">443 </span>&quot;--
+<span id="L444" class="LineNr">444 </span>let g:vim_markdown_conceal = 0
+<span id="L445" class="LineNr">445 </span>let g:vim_markdown_conceal_code_blocks = 0
+<span id="L446" class="LineNr">446 </span>&quot;==vim-json
+<span id="L447" class="LineNr">447 </span>&quot;let vim_json_syntax_conceal = 0
+<span id="L448" class="LineNr">448 </span>
+<span id="L449" class="LineNr">449 </span>
+<span id="L450" class="LineNr">450 </span>&quot;--
+<span id="L451" class="LineNr">451 </span>&quot;== ZFVimIM_pinyin ----------------------------------
+<span id="L452" class="LineNr">452 </span>&quot;--
+<span id="L453" class="LineNr">453 </span>nnoremap &lt;expr&gt;&lt;silent&gt; ;; ZFVimIME_keymap_toggle_n()
+<span id="L454" class="LineNr">454 </span>inoremap &lt;expr&gt; ;; ZFVimIME_keymap_toggle_i()
+<span id="L455" class="LineNr">455 </span>vnoremap &lt;expr&gt; ;; ZFVimIME_keymap_toggle_v()
+<span id="L456" class="LineNr">456 </span>
+<span id="L457" class="LineNr">457 </span>nnoremap &lt;expr&gt;&lt;silent&gt; ;: ZFVimIME_keymap_next_n()
+<span id="L458" class="LineNr">458 </span>inoremap &lt;expr&gt; ;: ZFVimIME_keymap_next_i()
+<span id="L459" class="LineNr">459 </span>vnoremap &lt;expr&gt; ;: ZFVimIME_keymap_next_v()
+<span id="L460" class="LineNr">460 </span>
+<span id="L461" class="LineNr">461 </span>nnoremap &lt;expr&gt;&lt;silent&gt; ;, ZFVimIME_keymap_add_n()
+<span id="L462" class="LineNr">462 </span>inoremap &lt;expr&gt; ;, ZFVimIME_keymap_add_i()
+<span id="L463" class="LineNr">463 </span>xnoremap &lt;expr&gt; ;, ZFVimIME_keymap_add_v()
+<span id="L464" class="LineNr">464 </span>
+<span id="L465" class="LineNr">465 </span>nnoremap &lt;expr&gt;&lt;silent&gt; ;. ZFVimIME_keymap_remove_n()
+<span id="L466" class="LineNr">466 </span>inoremap &lt;expr&gt; ;. ZFVimIME_keymap_remove_i()
+<span id="L467" class="LineNr">467 </span>xnoremap &lt;expr&gt; ;. ZFVimIME_keymap_remove_v()
+<span id="L468" class="LineNr">468 </span>
+<span id="L469" class="LineNr">469 </span>
+<span id="L470" class="LineNr">470 </span>&quot;--
+<span id="L471" class="LineNr">471 </span>&quot;== ZFDirDiff ----------------------------------
+<span id="L472" class="LineNr">472 </span>&quot;--
+<span id="L473" class="LineNr">473 </span>&quot;let g:ZFDirDiffKeymap_update = ['DD']
+<span id="L474" class="LineNr">474 </span>&quot;let g:ZFDirDiffKeymap_syncToHere = ['do', 'DH']
+<span id="L475" class="LineNr">475 </span>&quot;let g:ZFDirDiffKeymap_syncToThere = ['dp', 'DL']
+<span id="L476" class="LineNr">476 </span>
+<span id="L477" class="LineNr">477 </span>
+<span id="L478" class="LineNr">478 </span>&quot;--
+<span id="L479" class="LineNr">479 </span>&quot;== codelf ----------------------------------
+<span id="L480" class="LineNr">480 </span>&quot;--
+<span id="L481" class="LineNr">481 </span>inoremap &lt;silent&gt; &lt;F9&gt; &lt;C-R&gt;=codelf#start()&lt;CR&gt;
+<span id="L482" class="LineNr">482 </span>nnoremap &lt;silent&gt; &lt;F9&gt; :call codelf#start()&lt;CR&gt;
+<span id="L483" class="LineNr">483 </span>
+<span id="L484" class="LineNr">484 </span>
+<span id="L485" class="LineNr">485 </span>&quot;--
+<span id="L486" class="LineNr">486 </span>&quot;== vim-illuminate ----------------------------------
+<span id="L487" class="LineNr">487 </span>&quot;--
+<span id="L488" class="LineNr">488 </span>let g:Illuminate_delay = 750
+<span id="L489" class="LineNr">489 </span>hi illuminatedWord cterm=undercurl gui=undercurl
+<span id="L490" class="LineNr">490 </span>
+<span id="L491" class="LineNr">491 </span>
+<span id="L492" class="LineNr">492 </span>&quot;--
+<span id="L493" class="LineNr">493 </span>&quot;== thesaurus_query ----------------------------------
+<span id="L494" class="LineNr">494 </span>&quot;--
+<span id="L495" class="LineNr">495 </span>&quot;map &lt;leader&gt;th ：ThesaurusQueryReplaceCurrentWord &lt;CR&gt;
+<span id="L496" class="LineNr">496 </span>&quot;nnoremap  &lt;Leader&gt;th :ThesaurusQueryReplaceCurrentWord&lt;CR&gt;
+<span id="L497" class="LineNr">497 </span>
+<span id="L498" class="LineNr">498 </span>
+<span id="L499" class="LineNr">499 </span>&quot;--
+<span id="L500" class="LineNr">500 </span>&quot;== vcoolor ----------------------------------
+<span id="L501" class="LineNr">501 </span>&quot;--
+<span id="L502" class="LineNr">502 </span>cnoreabbrev color VCoolor
+<span id="L503" class="LineNr">503 </span>
+<span id="L504" class="LineNr">504 </span>
+<span id="L505" class="LineNr">505 </span>&quot;--
+<span id="L506" class="LineNr">506 </span>&quot;== fastfold ----------------------------------
+<span id="L507" class="LineNr">507 </span>&quot;--
+<span id="L508" class="LineNr">508 </span>&quot;nmap zuz &lt;Plug&gt;(FastFoldUpdate)
+<span id="L509" class="LineNr">509 </span>&quot;let g:fastfold_savehook = 1
+<span id="L510" class="LineNr">510 </span>&quot;let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+<span id="L511" class="LineNr">511 </span>&quot;let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
+<span id="L512" class="LineNr">512 </span>&quot;let g:markdown_folding = 1
+<span id="L513" class="LineNr">513 </span>&quot;let g:tex_fold_enabled = 1
+<span id="L514" class="LineNr">514 </span>&quot;let g:vimsyn_folding = 'af'
+<span id="L515" class="LineNr">515 </span>&quot;let g:xml_syntax_folding = 1
+<span id="L516" class="LineNr">516 </span>&quot;let g:javaScript_fold = 1
+<span id="L517" class="LineNr">517 </span>&quot;let g:sh_fold_enabled= 7
+<span id="L518" class="LineNr">518 </span>&quot;let g:ruby_fold = 1
+<span id="L519" class="LineNr">519 </span>&quot;let g:perl_fold = 1
+<span id="L520" class="LineNr">520 </span>&quot;let g:perl_fold_blocks = 1
+<span id="L521" class="LineNr">521 </span>&quot;let g:r_syntax_folding = 1
+<span id="L522" class="LineNr">522 </span>&quot;let g:rust_fold = 1
+<span id="L523" class="LineNr">523 </span>&quot;let g:php_folding = 1
+<span id="L524" class="LineNr">524 </span>
+<span id="L525" class="LineNr">525 </span>
+<span id="L526" class="LineNr">526 </span>&quot;--
+<span id="L527" class="LineNr">527 </span>&quot;== choosewin ----------------------------------
+<span id="L528" class="LineNr">528 </span>&quot;--
+<span id="L529" class="LineNr">529 </span>nmap  -  &lt;Plug&gt;(choosewin)
+<span id="L530" class="LineNr">530 </span>
+<span id="L531" class="LineNr">531 </span>
+<span id="L532" class="LineNr">532 </span>&quot;--
+<span id="L533" class="LineNr">533 </span>&quot;== vim-dict ----------------------------------
+<span id="L534" class="LineNr">534 </span>&quot;--
+<span id="L535" class="LineNr">535 </span>let g:vim_dict_dict = [
+<span id="L536" class="LineNr">536 </span>    \ '~/.config/nvim/dict',
+<span id="L537" class="LineNr">537 </span>    \ ]
+<span id="L538" class="LineNr">538 </span>let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
+<span id="L539" class="LineNr">539 </span>set cpt=.,k,w,b
+<span id="L540" class="LineNr">540 </span>let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1, 'html':1}
+<span id="L541" class="LineNr">541 </span>&quot;let g:apc_enable_ft = {'*':1}
+<span id="L542" class="LineNr">542 </span>
+<span id="L543" class="LineNr">543 </span>
+<span id="L544" class="LineNr">544 </span>&quot;--
+<span id="L545" class="LineNr">545 </span>&quot;== any-jump ----------------------------------
+<span id="L546" class="LineNr">546 </span>&quot;--
+<span id="L547" class="LineNr">547 </span>let g:any_jump_disable_default_keybindings = 1
+<span id="L548" class="LineNr">548 </span>&quot; Normal mode: Jump to definition under cursore
+<span id="L549" class="LineNr">549 </span>nnoremap &lt;leader&gt;jj :AnyJump&lt;CR&gt;
+<span id="L550" class="LineNr">550 </span>&quot; Visual mode: jump to selected text in visual mode
+<span id="L551" class="LineNr">551 </span>xnoremap &lt;leader&gt;jj :AnyJumpVisual&lt;CR&gt;
+<span id="L552" class="LineNr">552 </span>&quot; Normal mode: open previous opened file (after jump)
+<span id="L553" class="LineNr">553 </span>nnoremap &lt;leader&gt;ab :AnyJumpBack&lt;CR&gt;
+<span id="L554" class="LineNr">554 </span>&quot; Normal mode: open last closed search window again
+<span id="L555" class="LineNr">555 </span>nnoremap &lt;leader&gt;al :AnyJumpLastResults&lt;CR&gt;
+<span id="L556" class="LineNr">556 </span>
+<span id="L557" class="LineNr">557 </span>
+<span id="L558" class="LineNr">558 </span>&quot;--
+<span id="L559" class="LineNr">559 </span>&quot;== quickmenu ----------------------------------
+<span id="L560" class="LineNr">560 </span>&quot;--
+<span id="L561" class="LineNr">561 </span>noremap &lt;silent&gt;&lt;F1&gt; :call quickmenu#toggle(0)&lt;cr&gt;
+<span id="L562" class="LineNr">562 </span>let g:quickmenu_options = &quot;LH&quot;
+<span id="L563" class="LineNr">563 </span>call quickmenu#append(&quot;# Run&quot;, '')
+<span id="L564" class="LineNr">564 </span>call quickmenu#append(&quot;Run %{expand('%:t')}&quot;, 'call CompileRunGcc()', &quot;Run current file&quot;)
+<span id="L565" class="LineNr">565 </span>
+<span id="L566" class="LineNr">566 </span>call quickmenu#append(&quot;# Git&quot;, '')
+<span id="L567" class="LineNr">567 </span>call quickmenu#append(&quot;git 暂存区('s' to add)&quot;, 'Magit', &quot;&quot;)
+<span id="L568" class="LineNr">568 </span>call quickmenu#append(&quot;git log('d' to open)&quot;, 'GitLog', &quot;&quot;)
+<span id="L569" class="LineNr">569 </span>
+<span id="L570" class="LineNr">570 </span>call quickmenu#append(&quot;# spell&quot;, '')
+<span id="L571" class="LineNr">571 </span>call quickmenu#append(&quot;spell('z=' to change)&quot;, 'set spell!', &quot;&quot;)
+<span id="L572" class="LineNr">572 </span>call quickmenu#append(&quot;codelf&quot;, 'call codelf#start()', &quot;&quot;)
+<span id="L573" class="LineNr">573 </span>
+<span id="L574" class="LineNr">574 </span>call quickmenu#append(&quot;# yank&quot;, '')
+<span id="L575" class="LineNr">575 </span>call quickmenu#append(&quot;yank&quot;, 'CocList -A --normal yank', &quot;&quot;)
+<span id="L576" class="LineNr">576 </span>
+<span id="L577" class="LineNr">577 </span>call quickmenu#append(&quot;# markdown&quot;, '')
+<span id="L578" class="LineNr">578 </span>call quickmenu#append(&quot;tablemode&quot;, 'TableModeToggle', &quot;&quot;)
+<span id="L579" class="LineNr">579 </span>
+<span id="L580" class="LineNr">580 </span>call quickmenu#append(&quot;# Color&quot;, '')
+<span id="L581" class="LineNr">581 </span>call quickmenu#append(&quot;Vcoolor(调色板)&quot;, 'VCoolor', &quot;&quot;)
+<span id="L582" class="LineNr">582 </span>
+<span id="L583" class="LineNr">583 </span>call quickmenu#append(&quot;# other&quot;, '')
+<span id="L584" class="LineNr">584 </span>call quickmenu#append(&quot;goyo&quot;, 'Goyo', &quot;&quot;)
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

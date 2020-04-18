@@ -1,0 +1,173 @@
+{
+    "files.autoSave": "off",
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    //底栏
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "SynthWave '84",
+    // "workbench.iconTheme": "vscode-icons",
+    //不要高亮相同的单词
+    "editor.occurrencesHighlight": false,
+    //右边的导航大纲
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 18,
+    "editor.suggestSelection": "first",
+    "editor.defaultFormatter": "formulahendry.code-runner",
+    "editor.fontFamily": "'Source Code Pro Medium'",
+    "terminal.integrated.fontFamily": "'Source Code Pro Medium'",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
+    "sync.gist": "142e96bf6cf128e420a00d0c51bb87df",
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.quietSync": true,
+    "sync.forceUpload": true,
+    "latex-workshop.view.pdf.viewer": "external",
+    "breadcrumbs.enabled": false,
+    "leetcode.endpoint": "leetcode-cn",
+    "translator.translateOnHover":true,
+    // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "cSpell.userWords": [
+        "lsdjfslf"
+    ],
+    "vim.easymotion": false,
+    "vim.sneak": false,
+    "vim.incsearch": false,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.searchHighlightColor":"blue",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["l", "l"],
+            "after": ["<Right>"]
+        },
+        {
+            "before": ["h", "h"],
+            "after": ["<Left>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "n"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["j", "j", "j", "j", "j"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["k", "k", "k", "k", "k"]
+        },
+        {
+            "before": [";"],
+            "after": [":"]
+        },
+        {
+            "before": ["W"],
+            "after": [":", "w","<Enter>"]
+        },
+        {
+            "before": ["Q"],
+            "after": [":", "q","<Enter>"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["`"],
+            "after": ["b", "~"]
+        },
+        {
+            "before": [ "<leader>", "<space>" ],
+            "commands": [ "workbench.action.showCommands" ]
+        },
+        {
+            "before": [ "<leader>", "f", "S" ],
+            "commands": [ "workbench.action.files.saveAll" ]
+        },
+        // {
+        //     "before": [ "<leader>", "f"],
+        //     "commands": [ "workbench.files.action.collapseExplorerFolders" ]
+        // },
+        {
+            "before": ["t", "r"],
+            "commands": [ "workbench.view.explorer" ]
+        },
+        {
+            "before": [ "<leader>", "f" ],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["<leader>", "w"],
+            "commands": [
+                "Translate and Show in Bubble"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "xelatex->bibtex->exlatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+}
