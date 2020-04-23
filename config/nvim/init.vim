@@ -140,6 +140,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "== 设置键位
 "==
 let mapleader="\<space>"
+noremap <c-z> <nop>
 noremap Q :q<CR>
 noremap W :w<CR>
 " Press <SPACE> + q to close the window below the current window
@@ -148,6 +149,7 @@ noremap U <C-r>
 "noremap S <C-w>j:w<CR>
 noremap u :u<CR>
 nnoremap ; :
+vnoremap ; :
 inoremap jj <Esc>
 noremap H ^
 noremap L $
@@ -242,7 +244,8 @@ map <leader>/ <leader>c<space>
 inoremap <c-l> <right>
 "inoremap hh <left>
 "inoremap <a-h> <Left>
-inoremap <c-h> <Left>
+"inoremap <c-h> <Left>
+inoremap <c-h> <esc>ha
 inoremap <c-k> <up>
 "inoremap <a-k> <up>
 inoremap <c-j> <down>
@@ -349,7 +352,4 @@ source ~/.config/nvim/color.vim
 
 "==plug_settings
 source ~/.config/nvim/plugsettings.vim
-
-
-
 

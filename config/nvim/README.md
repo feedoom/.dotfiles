@@ -32,6 +32,9 @@ cd ~/.config/nvim/plugged/bracey.vim
 npm install --prefix server
 ```
 
+### leetcode
+pip3 install keyring browser-cookie3
+
 
 ### END
 安装完后应运行`:checkhealth`

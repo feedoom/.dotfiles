@@ -2,12 +2,12 @@
 "--
 "== coc ----------------------------------
 "--
-set completeopt=menu,menuone,noselect "vim-dict 补全设置
+"set completeopt=menu,menuone,noselect "vim-dict 补全设置
 set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh']
+let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh', 'coc-word', 'coc-highlight', 'coc-pairs', 'coc-calc', 'coc-bookmark', 'coc-todolist']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
         let col = col('.') - 1
@@ -26,8 +26,51 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 let g:coc_snippet_next = '<tab>'
 nnoremap <silent> <leader>ya :<C-u>CocList -A --normal yank<cr>
-"nmap tr :CocCommand explorer<CR>
 nmap tr :CocCommand explorer<CR>
+"nnoremap <c-c> :CocCommand<CR>
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Mappings using CoCList:
+" Show all diagnostics.
+"nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>e  :<C-u>CocList locationlist<CR>
+
+"coc-highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"coc-translator
+nmap <Leader>t <Plug>(coc-translator-p)
+"vmap <Leader>t <Plug>(coc-translator-pv)
+
+"coc calc
+" append result on current expression
+"nmap <Leader>ca <Plug>(coc-calc-result-append)
+" replace result on current expression
+nmap <Leader>cr <Plug>(coc-calc-result-replace)
 
 
 "--
@@ -38,7 +81,7 @@ nmap tr :CocCommand explorer<CR>
 noremap <C-p> :Files<CR>
 " 查找文件内容
 "noremap <C-f> :Ag<CR>
-noremap <C-f> :Rg<CR>
+noremap <C-f> :Ag<CR>
 " 历史打开的文件
 noremap <C-s> :MRU<CR>
 " 查找tag
@@ -50,44 +93,44 @@ noremap <C-l> :Lines<CR>
 " 历史命令
 noremap <C-h> :History:<CR>
 
-"autocmd! Filetype fzf
-"autocmd  Filetype fzf set laststatus=0 noruler
-			"\| autocmd BufLeave <buffer> set laststatus=2 ruler
+autocmd! Filetype fzf
+autocmd  Filetype fzf set laststatus=0 noruler
+            \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
-"command! -bang -nargs=* Buffers
-			"\ call fzf#vim#buffers(
-			"\   '',
-			"\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			"\           : fzf#vim#with_preview('right:0%', '?'),
-			"\   <bang>0)
+command! -bang -nargs=* Buffers
+            \ call fzf#vim#buffers(
+            \   '',
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:0%', '?'),
+            \   <bang>0)
 
 
-"command! -bang -nargs=* LinesWithPreview
-			"\ call fzf#vim#grep(
-			"\   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-			"\   fzf#vim#with_preview({}, 'up:50%', '?'),
-			"\   1)
+command! -bang -nargs=* LinesWithPreview
+            \ call fzf#vim#grep(
+            \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+            \   fzf#vim#with_preview({}, 'up:50%', '?'),
+            \   1)
 
-"command! -bang -nargs=* Ag
-			"\ call fzf#vim#ag(
-			"\   '',
-			"\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			"\           : fzf#vim#with_preview('right:50%', '?'),
-			"\   <bang>0)
+command! -bang -nargs=* Ag
+            \ call fzf#vim#ag(
+            \   '',
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%', '?'),
+            \   <bang>0)
 
-"command! -bang -nargs=* MRU call fzf#vim#history(fzf#vim#with_preview())
+command! -bang -nargs=* MRU call fzf#vim#history(fzf#vim#with_preview())
 
-"command! -bang BTags
-			"\ call fzf#vim#buffer_tags('', {
-			"\     'down': '40%',
-			"\     'options': '--with-nth 1
-			"\                 --reverse
-			"\                 --prompt "> "
-			"\                 --preview-window="70%"
-			"\                 --preview "
-			"\                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2} |
-			"\                     head -n 16"'
-			"\ })
+command! -bang BTags
+            \ call fzf#vim#buffer_tags('', {
+            \     'down': '40%',
+            \     'options': '--with-nth 1
+            \                 --reverse
+            \                 --prompt "> "
+            \                 --preview-window="70%"
+            \                 --preview "
+            \                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2} |
+            \                     head -n 16"'
+            \ })
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -109,7 +152,7 @@ command! BD call fzf#run(fzf#wrap({
   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 \ }))
 
-noremap <c-d> :BD<CR>
+"noremap <c-d> :BD<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 
@@ -211,6 +254,12 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 
 "--
+"== tagbar ----------------------------------
+"--
+"nmap tg :TagbarToggle<CR>
+
+
+"--
 "== undotree ----------------------------------
 "--
 nnoremap un :UndotreeToggle<cr>
@@ -308,7 +357,7 @@ nmap fff <Plug>(easymotion-sn)
 "--
 "== goyo ----------------------------------
 "--
-map gy :Goyo<CR>
+map <leader>gy :Goyo<CR>
 
 
 "--
@@ -357,7 +406,7 @@ cnoreabbrev gl GitLog
 "--
 "== Colorizer ----------------------------------
 "--
-let g:colorizer_syntax = 1
+"let g:colorizer_syntax = 1
 
 
 "--
@@ -384,6 +433,13 @@ let g:mta_filetypes = {
 "let g:mta_set_default_matchtag_color=0
 "let g:mta_use_matchparen_group = 0
 "highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+
+
+"--
+"== breeze ----------------------------------
+"--
+au BufNewFile,BufRead *.html
+    \ noremap tg :BreezePrintDom<cr>
 
 
 "--
@@ -453,11 +509,11 @@ vmap  <Leader>r <Plug>DictRVSearch
 "nmap  <Leader>t <Plug>Translate
 "vmap  <Leader>t <Plug>TranslateV
 " Display translation in a window
-nmap  <Leader>t <Plug>TranslateW
-vmap  <Leader>wwwww <Plug>TranslateWV
-" Replace the text with translation
-nmap  <Leader>r <Plug>TranslateR
-vmap  <Leader>rrrrr <Plug>TranslateRV
+"nmap  <Leader>t <Plug>TranslateW
+"vmap  <Leader>wwwww <Plug>TranslateWV
+"" Replace the text with translation
+"nmap  <Leader>r <Plug>TranslateR
+"vmap  <Leader>rrrrr <Plug>TranslateRV
 "hi def link TranslatorQuery             Identifier
 "hi def link TranslatorPhonetic          Type
 "hi def link TranslatorExplain           Statement
@@ -556,29 +612,27 @@ nmap  -  <Plug>(choosewin)
 
 
 "--
-"== vim-dict ----------------------------------
-"--
-let g:vim_dict_dict = [
-    \ '~/.config/nvim/dict',
-    \ ]
-let g:vim_dict_config = {'html':'html,javascript,css', 'markdown':'text'}
-set cpt=.,k,w,b
-let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1, 'html':1}
-"let g:apc_enable_ft = {'*':1}
-
-
-"--
 "== any-jump ----------------------------------
 "--
-let g:any_jump_disable_default_keybindings = 1
-" Normal mode: Jump to definition under cursore
-nnoremap <leader>jj :AnyJump<CR>
-" Visual mode: jump to selected text in visual mode
-xnoremap <leader>jj :AnyJumpVisual<CR>
-" Normal mode: open previous opened file (after jump)
-nnoremap <leader>ab :AnyJumpBack<CR>
-" Normal mode: open last closed search window again
-nnoremap <leader>al :AnyJumpLastResults<CR>
+"let g:any_jump_disable_default_keybindings = 1
+"" Normal mode: Jump to definition under cursore
+"nnoremap <leader>jj :AnyJump<CR>
+"" Visual mode: jump to selected text in visual mode
+"xnoremap <leader>jj :AnyJumpVisual<CR>
+"" Normal mode: open previous opened file (after jump)
+"nnoremap <leader>ab :AnyJumpBack<CR>
+"" Normal mode: open last closed search window again
+"nnoremap <leader>al :AnyJumpLastResults<CR>
+
+
+"--
+"== vim-better-whitespace ----------------------------------
+"--
+let g:current_line_whitespace_disabled_hard=1
+"let g:strip_whitespace_confirm=0
+let g:better_whitespace_filetypes_blacklist=[ 'diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 
 "--
@@ -608,3 +662,18 @@ call quickmenu#append("Vcoolor(调色板)", 'VCoolor', "")
 
 call quickmenu#append("# other", '')
 call quickmenu#append("goyo", 'Goyo', "")
+
+
+"--
+"== leetcode ----------------------------------
+"--
+let g:leetcode_solution_filetype = 'javascript'
+let g:leetcode_china = 1
+let g:leetcode_browser = 'firefox'
+
+
+"--
+"== hello word ----------------------------------
+"--
+let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
+

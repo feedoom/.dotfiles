@@ -127,6 +127,8 @@ bindkey -M vicmd "m" vi-cmd-mode
 #bindkey '^?'
 bindkey '^_' vi-history-search-backward
 bindkey '^n' up-line-or-search
+bindkey '^b' vi-backward-blank-word
+bindkey '^d' backward-delete-word
 
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
@@ -246,12 +248,6 @@ ex () {
     }
 
 
-#欢迎语
-#echo  "talk is cheap,show me the code" | boxes -d stone | lolcat 
-#cowsay -f Pikachu talk is cheap,show me the code
-catsay talk is cheap,show me the code | lolcat
-
-
 eval "$(thefuck --alias)"
 export TERM=xterm-256color
 export TERM_ITALICS=true
@@ -270,7 +266,7 @@ alias c='clear'
 #alias mt='neomutt'
 alias ra='ranger'
 #alias feem='~/Feem_v4.3.0_For_Linux.AppImage'
-alias tran='trans en:zh'
+alias tran='trans -sp en:zh'
 alias neo='neofetch'
 alias one='onefetch'
 alias manl='tldr'
@@ -287,9 +283,10 @@ alias cd...='cd ../../../'
 alias diff='icdiff'
 alias manv='viman'
 alias what='cheat'
+alias nv='nvim'
 alias you='you-get'
 alias ari='aria2c'
-alias ass='~/.config/niconvert/main.pyw'
+alias ass='~/.config/niconvert/main.pyw -o'
 alias mouse='python ~/.config/mouse.py'
 alias gd='git difftool'
 #alias gd='git icdiff'
@@ -299,3 +296,11 @@ alias gs='git status'
 alias gc='git commit'
 alias gl='tig'
 alias gp='git push -u origin master'
+
+
+#欢迎语
+#echo  "talk is cheap,show me the code" | boxes -d stone | lolcat 
+catsay  talk is cheap,show me the code | lolcat
+#fortune | catsay | lolcat
+#neofetch
+

@@ -34,12 +34,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 "File navigation
-Plug 'dyng/ctrlsf.vim'  "搜索文件内的代码
+"Plug 'dyng/ctrlsf.vim'  "搜索文件内的代码
 "Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-"Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF'
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -49,18 +49,19 @@ Plug 'mbbill/undotree'
 
 "taglist
 Plug 'liuchengxu/vista.vim'
+"Plug 'majutsushi/tagbar'
 
 
 "Editor Enhancement
 Plug 'kien/rainbow_parentheses.vim' " 括号高亮
 Plug 'scrooloose/nerdcommenter'     " 注释
-Plug 'jiangmiao/auto-pairs'         " 自动匹配括号
+"Plug 'jiangmiao/auto-pairs'         " 自动匹配括号
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'          " 缩进线
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'      " 对齐
 Plug 'andymass/vim-matchup'         " 快速跳转
-Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'    " 快速跳转
 Plug 'mg979/vim-visual-multi'       " 多光标
 
 
@@ -68,6 +69,7 @@ Plug 'mg979/vim-visual-multi'       " 多光标
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 "Plug 'cohama/agit.vim'     " git历史查看
+Plug 'junegunn/gv.vim'
 Plug 'jreybert/vimagit'    " 查看git暂存区
 Plug 'kablamo/vim-git-log' " git log
 
@@ -81,13 +83,15 @@ Plug 'Chiel92/vim-autoformat'
 
 
 "html,css,js
-Plug 'chrisbra/Colorizer'
+"Plug 'chrisbra/Colorizer'
 Plug 'mattn/emmet-vim', { 'for': ['vim-plug', 'html']}
 Plug 'Valloric/MatchTagAlways', { 'for': ['vim-plug', 'html']} " 高亮匹配标签
 Plug 'alvan/vim-closetag', { 'for': ['vim-plug', 'html'] }     " 自动关闭标签
+Plug 'AndrewRadev/tagalong.vim'                                "同时修改html标签 
 "html 预览
 Plug 'turbio/bracey.vim'
 Plug 'jaxbot/browserlink.vim'
+Plug 'idanarye/breeze.vim' "html dom
 
 
 "markdown
@@ -105,8 +109,9 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for' :['markdown'
 
 "others
 Plug 'lambdalisue/suda.vim'              "sudo 写入
+"Plug 'voldikss/vim-translator'           " translator
 Plug 'iamcco/dict.vim'                   "translator to dict
-Plug 'voldikss/vim-translator'           " translator
+Plug 'VincentCordobes/vim-translate'     " translator
 Plug 'sheerun/vim-polyglot'              " 语法扩展
 Plug 'yianwillis/vimcdoc'                " vim中文文档
 Plug 'KabbAmine/vCoolor.vim'             "调色板
@@ -118,16 +123,24 @@ Plug 'mhinz/vim-startify'                " 开始页面
 Plug 't9md/vim-choosewin'                "跳转窗口
 Plug 'RRethy/vim-illuminate'             " 高亮附近相同的词
 Plug 'tpope/vim-repeat'                  " 重复操作
+Plug 'skywind3000/quickmenu.vim'         "帮助菜单
+Plug 'tpope/vim-speeddating'             "递增减
+Plug 'airblade/vim-rooter'               "切换项目根目录 
+Plug 'matze/vim-move'                    "alt-h,j,k,l to move text
+Plug 'AndrewRadev/splitjoin.vim'         "gS单行转多行,gJ多行转单行
+Plug 'voldikss/vim-hello-word'
+"Plug 'ntpeters/vim-better-whitespace'
+"Plug 'hotoo/pangu.vim'                   "中文排版
+"Plug 'pechorin/any-jump.vim'
 "Plug 'junegunn/vim-peekaboo'            " 寄存器
 "Plug 'spolu/dwm.vim'
-"Plug 'vimwiki/vimwiki'
 "Plug 'ron89/thesaurus_query.vim'        "近义词查找
 "Plug 'jceb/vim-orgmode'
-"Plug 'MattesGroeger/vim-bookmarks'
-Plug 'skywind3000/vim-dict'              "词典 
-Plug 'pechorin/any-jump.vim'
-Plug 'tpope/vim-speeddating'             "递增减
-Plug 'skywind3000/quickmenu.vim'         "帮助菜单
+"Plug 'vimwiki/vimwiki'
+"Plug 'hiberabyss/NeovimGdb'
+"Plug 'ianding1/leetcode.vim'
+"Plug 'jpalardy/vim-slime'
+"Plug 'KabbAmine/zeavim.vim'
 
 call plug#end()
 
