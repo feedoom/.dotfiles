@@ -244,8 +244,8 @@ map <leader>/ <leader>c<space>
 inoremap <c-l> <right>
 "inoremap hh <left>
 "inoremap <a-h> <Left>
-"inoremap <c-h> <Left>
-inoremap <c-h> <esc>ha
+inoremap <c-h> <Left>
+"inoremap <c-h> <esc>ha
 inoremap <c-k> <up>
 "inoremap <a-k> <up>
 inoremap <c-j> <down>

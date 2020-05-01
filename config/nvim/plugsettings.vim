@@ -677,3 +677,20 @@ let g:leetcode_browser = 'firefox'
 "--
 let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
 
+
+"--
+"== zeavim ----------------------------------
+"--
+"nmap gzz <Plug>Zeavim
+"vmap gzz <Plug>ZVVisSelection
+"nmap <leader>z <Plug>ZVKeyDocset
+"nmap gZ <Plug>ZVKeyDocset<CR>
+"nmap gz <Plug>ZVOperator
+"let g:zv_keep_focus = 0
+"let g:zv_file_types = {
+            "\   'help'                : 'vim',
+            "\   'javascript'          : 'javascript,nodejs',
+            "\   'python'              : 'python_3',
+            "\   '\v^(G|g)ulpfile\.js' : 'gulp,javascript,nodejs',
+            "\ }
+

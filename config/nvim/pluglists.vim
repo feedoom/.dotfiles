@@ -140,7 +140,7 @@ Plug 'voldikss/vim-hello-word'
 "Plug 'hiberabyss/NeovimGdb'
 "Plug 'ianding1/leetcode.vim'
 "Plug 'jpalardy/vim-slime'
-"Plug 'KabbAmine/zeavim.vim'
+Plug 'KabbAmine/zeavim.vim'              "文档
 
 call plug#end()
 
