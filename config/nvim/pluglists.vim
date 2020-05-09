@@ -30,6 +30,7 @@ Plug 'rakr/vim-one'
 "Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'tenfyzhong/CompleteParameter.vim'
 "Plug 'maralla/completor.vim'
+"Plug 'artur-shaik/vim-javacomplete2'   "java autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
@@ -53,16 +54,22 @@ Plug 'liuchengxu/vista.vim'
 
 
 "Editor Enhancement
-Plug 'kien/rainbow_parentheses.vim' " 括号高亮
-Plug 'scrooloose/nerdcommenter'     " 注释
-"Plug 'jiangmiao/auto-pairs'         " 自动匹配括号
+Plug 'kien/rainbow_parentheses.vim'      " 括号高亮
+Plug 'scrooloose/nerdcommenter'          " 注释
+"Plug 'jiangmiao/auto-pairs'              " 自动匹配括号
 Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'          " 缩进线
+Plug 'Yggdroot/indentLine'               " 缩进线
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-easy-align'      " 对齐
-Plug 'andymass/vim-matchup'         " 快速跳转
-Plug 'easymotion/vim-easymotion'    " 快速跳转
-Plug 'mg979/vim-visual-multi'       " 多光标
+Plug 'junegunn/vim-easy-align'           " 对齐
+Plug 'andymass/vim-matchup'              " 快速跳转
+Plug 'easymotion/vim-easymotion'         " 快速跳转
+Plug 'mg979/vim-visual-multi'            " 多光标
+Plug 'rhysd/clever-f.vim'                "增强f,F
+Plug 'haya14busa/incsearch.vim'          "模糊搜素
+Plug 'haya14busa/incsearch-fuzzy.vim'    "模糊搜素
+Plug 'terryma/vim-smooth-scroll'         "更好的滚动
+Plug 'kana/vim-textobj-user'             "文本对象 
+Plug 'kana/vim-textobj-line'             "行文本对象
 
 
 "git
@@ -128,7 +135,12 @@ Plug 'tpope/vim-speeddating'             "递增减
 Plug 'airblade/vim-rooter'               "切换项目根目录 
 Plug 'matze/vim-move'                    "alt-h,j,k,l to move text
 Plug 'AndrewRadev/splitjoin.vim'         "gS单行转多行,gJ多行转单行
-Plug 'voldikss/vim-hello-word'
+Plug 'DataWraith/auto_mkdir'             "自动创建中间的目录结构
+Plug 'junkblocker/git-time-lapse'        "当前文件 git diff
+Plug 'Shougo/echodoc.vim'                "参数提示
+Plug 'AndrewRadev/linediff.vim'          "两个代码块diff visual模式下Linediff
+Plug 'chxuan/change-colorscheme'
+"Plug 'voldikss/vim-hello-word'
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'hotoo/pangu.vim'                   "中文排版
 "Plug 'pechorin/any-jump.vim'
@@ -140,7 +152,6 @@ Plug 'voldikss/vim-hello-word'
 "Plug 'hiberabyss/NeovimGdb'
 "Plug 'ianding1/leetcode.vim'
 "Plug 'jpalardy/vim-slime'
-Plug 'KabbAmine/zeavim.vim'              "文档
-
+"Plug 'KabbAmine/zeavim.vim'              "文档
+"Plug 'svermeulen/vim-subversive'
 call plug#end()
-

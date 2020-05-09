@@ -355,6 +355,29 @@ nmap fff <Plug>(easymotion-sn)
 
 
 "--
+"== clever-f ----------------------------------
+"--
+let g:clever_f_smart_case = 1
+let g:clever_f_across_no_line = 0
+
+
+"--
+"== incsearch-fuzzy ----------------------------------
+"--
+map ? <Plug>(incsearch-fuzzy-/)
+"map zg/ <Plug>(incsearch-fuzzy-stay)
+
+
+"--
+"== vim-smooth-scroll ----------------------------------
+"--
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+
+"--
 "== goyo ----------------------------------
 "--
 map <leader>gy :Goyo<CR>
@@ -667,9 +690,9 @@ call quickmenu#append("goyo", 'Goyo', "")
 "--
 "== leetcode ----------------------------------
 "--
-let g:leetcode_solution_filetype = 'javascript'
 let g:leetcode_china = 1
-let g:leetcode_browser = 'firefox'
+let g:leetcode_browser = 'chrome'
+let g:leetcode_solution_filetype = 'python'
 
 
 "--
@@ -694,3 +717,19 @@ let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
             "\   '\v^(G|g)ulpfile\.js' : 'gulp,javascript,nodejs',
             "\ }
 
+
+"--
+"== quick-scope ----------------------------------
+"--
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+
+"--
+"== echodoc.vim ----------------------------------
+"--
+set noshowmode
+let g:echodoc_enable_at_startup = 1
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#enable_force_overwrite = 1

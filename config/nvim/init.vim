@@ -8,11 +8,11 @@
 " ===
 " === Auto load for first time uses
 " ===
-if has ('nvim')
-    source ~/.config/nvim/default_configs/nvim_auto.vim
-else
-    source ~/.config/nvim/default_configs/vim_auto.vim
-endif
+"if has ('nvim')
+"    source ~/.config/nvim/default_configs/nvim_auto.vim
+"else
+"    source ~/.config/nvim/default_configs/vim_auto.vim
+"endif
 source ~/.config/nvim/default_configs/machine_specific_default.vim
 
 
@@ -32,17 +32,17 @@ endif
 "au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 "au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 "##### auto fcitx  ###########
-let g:input_toggle = 1
-function! Fcitx2en()
-    let s:input_status = system("fcitx-remote")
-    if s:input_status == 2
-        let g:input_toggle = 1
-        let l:a = system("fcitx-remote -c")
-    endif
-endfunction
-set ttimeoutlen=150
-"退出插入模式
-autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
+"let g:input_toggle = 1
+"function! Fcitx2en()
+"    let s:input_status = system("fcitx-remote")
+"    if s:input_status == 2
+"        let g:input_toggle = 1
+"        let l:a = system("fcitx-remote -c")
+"    endif
+"endfunction
+"set ttimeoutlen=150
+""退出插入模式
+"autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
 
 
 "==
@@ -266,7 +266,31 @@ else
 endif
 cnoreabbrev zshrc :e ~/.zshrc
 
+" 命令行模式增强，ctrl - a到行首， -e 到行尾
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
 
+"搜索结果居中展示
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" 调整缩进后自动选中，方便再次操作
+vnoremap < <gv      
+vnoremap > >gv
+
+"光标行移动
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+" 选中并高亮最后一次插入的内容
+nnoremap gv `[v`]
 
 
 "==
@@ -353,3 +377,30 @@ source ~/.config/nvim/color.vim
 "==plug_settings
 source ~/.config/nvim/plugsettings.vim
 
+
+
+
+
+"" 代码折叠
+"set foldenable
+"" 折叠方法
+"" manual    手工折叠
+"" indent    使用缩进表示折叠
+"" expr      使用表达式定义折叠
+"" syntax    使用语法定义折叠
+"" diff      对没有更改的文本进行折叠
+"" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+"set foldmethod=indent
+"set foldlevel=99
+"" 代码折叠自定义快捷键 <leader>zz
+"let g:FoldMethod = 0
+"map <leader>zz :call ToggleFold()<cr>
+"fun! ToggleFold()
+"    if g:FoldMethod == 0
+"        exe "normal! zM"
+"        let g:FoldMethod = 1
+"    else
+"        exe "normal! zR"
+"        let g:FoldMethod = 0
+"    endif
+"endfun

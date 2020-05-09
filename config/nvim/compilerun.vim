@@ -12,8 +12,11 @@ func! CompileRunGcc()
 		:res -15
 		:term ./%<
 	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
+		"exec "!javac %"
+		"exec "!time java %<"
+        "exec "!java %:r"
+		exec "!javac -classpath .:lib/stdlib.jar %"
+        exec "!java -classpath .:lib/stdlib.jar %:r"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'

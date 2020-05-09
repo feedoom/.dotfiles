@@ -286,6 +286,7 @@ alias what='cheat'
 alias nv='nvim'
 alias you='you-get'
 alias ari='aria2c'
+alias send='qrcp'
 alias ass='~/.config/niconvert/main.pyw -o'
 alias mouse='python ~/.config/mouse.py'
 alias gd='git difftool'
@@ -296,6 +297,8 @@ alias gs='git status'
 alias gc='git commit'
 alias gl='tig'
 alias gp='git push -u origin master'
+alias caj='~/CAJViewer-x86_64-libc-2.24.AppImage'
+
 
 
 #欢迎语
