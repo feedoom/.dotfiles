@@ -422,7 +422,7 @@ exec_always --no-startup-id albert
 exec_always --no-startup-id variety
 exec_always --no-startup-id tilda 
 #exec_always --no-startup-id guake
-bindsym $mod+Return exec st #alacritty
+bindsym $mod+Return exec alacritty #st 
 bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec dde-file-manager
 bindsym $mod+c exec google-chrome-stable

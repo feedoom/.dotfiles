@@ -17,6 +17,7 @@ set background=dark    " Setting dark mode
 "colorscheme space_vim_theme
 "colorscheme deus
 colorscheme one
+"colorscheme dracula
 "colorscheme snazzy
 
 

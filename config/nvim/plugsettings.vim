@@ -1,4 +1,3 @@
-"补全设置
 "--
 "== coc ----------------------------------
 "--
@@ -64,13 +63,318 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-translator
 nmap <Leader>t <Plug>(coc-translator-p)
-"vmap <Leader>t <Plug>(coc-translator-pv)
+vmap <Leader>t <Plug>(coc-translator-pv)
 
 "coc calc
 " append result on current expression
 "nmap <Leader>ca <Plug>(coc-calc-result-append)
 " replace result on current expression
 nmap <Leader>cr <Plug>(coc-calc-result-replace)
+
+
+
+"--
+"== Colorizer ----------------------------------
+"--
+"let g:colorizer_syntax = 1
+
+
+"--
+"== emmet-vim ----------------------------------
+"--
+"let g:user_emmet_settings = {
+"            \ 'javascript.jsx': {
+"            \ 'extends' : 'jsx',
+"            \ },
+"            \}
+let g:user_emmet_leader_key = ','
+
+
+"--
+"== MatchTagAlways ----------------------------------
+"--
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \}
+"改变颜色
+"let g:mta_set_default_matchtag_color=0
+"let g:mta_use_matchparen_group = 0
+"highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+
+
+"--
+"== breeze ----------------------------------
+"--
+au BufNewFile,BufRead *.html
+    \ noremap tg :BreezePrintDom<cr>
+
+
+
+"--
+"== MarkdownPreview ----------------------------------
+"--
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+			\ 'mkit': {},
+			\ 'katex': {},
+			\ 'uml': {},
+			\ 'maid': {},
+			\ 'disable_sync_scroll': 0,
+			\ 'sync_scroll_type': 'middle',
+			\ 'hide_yaml_meta': 1
+			\ }
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+let g:mkdp_page_title = '「${name}」'
+
+
+"--
+"== vim-table-mode ----------------------------------
+"--
+noremap <LEADER>tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+"let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+"let g:table_mode_delimiter = ' '
+let g:table_mode_corner='|'
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+
+
+"--
+"== undotree ----------------------------------
+"--
+nnoremap un :UndotreeToggle<cr>
+set undodir=~/.config/nvim/tmp/undo  "记录在~/.undodir里 
+set undofile
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_DiffpanelHeight = 8
+let g:undotree_SplitWidth = 24
+function g:Undotree_CustomMap()
+	nmap <buffer> u <plug>UndotreeNextState
+	nmap <buffer> e <plug>UndotreePreviousState
+	nmap <buffer> U 5<plug>UndotreeNextState
+	nmap <buffer> E 5<plug>UndotreePreviousState
+endfunc
+
+
+
+"--
+"== Vista ----------------------------------
+"--
+noremap <silent> tg :Vista!!<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+function! NearestMethodOrFunction() abort
+	return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+"set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+
+"--
+"== tagbar ----------------------------------
+"--
+"nmap tg :TagbarToggle<CR>
+
+
+
+"--
+"== vim-autoformat ----------------------------------
+"--
+nnoremap <leader>fo :Autoformat<CR>
+"let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; eslint --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+"let g:formatters_javascript = ['eslint']
+"let g:formatdef_my_html = '"html-beautify -s 2"'
+
+
+
+"--
+"== vim-easy-align ----------------------------------
+"--
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+  let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
+
+
+"--
+"== rainbow_parentheses ----------------------------------
+"--
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+" 不加入这行, 防止黑色括号出现, 很难识别
+" \ ['black',       'SeaGreen3'],
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+"--
+"== indentLine ----------------------------------
+"--
+let g:indentLine_char = '¦'  ", '¦', '┆', '┊'
+"let g:indentLine_setColors = 0
+let g:indentLine_color_term = 17
+"let g:indentLine_noConcealCursor = ""
+let g:indentLine_bgcolor_gui = '#303030'
+
+
+"--
+"== vim-illuminate ----------------------------------
+"--
+let g:Illuminate_delay = 750
+hi illuminatedWord cterm=undercurl gui=undercurl
+
+
+"--
+"== goyo ----------------------------------
+"--
+map <leader>gy :Goyo<CR>
+
+
+
+"--
+"== rnvimr ----------------------------------
+"--
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_pick_enable = 1
+nnoremap <silent> ra :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+
+
+"==nerdtree
+"nmap tr :NERDTreeToggle<CR>	" 设置目录树快捷键
+"通过 h、j、k、l 来移动光标
+"o 打开关闭文件或目录，如果想打开文件，必须光标移动到文件名
+"t 在标签页中打开
+"s 和 i 可以水平或纵向分割窗口打开文件
+"p 到上层目录
+"P 到根目录
+"K 到同目录第一个节点
+"P 到同目录最后一个节点
+"let NERDTreeMapOpenExpl = ""
+"let NERDTreeMapUpdir = ""
+"let NERDTreeMapUpdirKeepOpen = "l"
+"let NERDTreeMapOpenSplit = ""
+"let NERDTreeOpenVSplit = ""
+"let NERDTreeMapActivateNode = "i"
+"let NERDTreeMapOpenInTab = "o"
+"let NERDTreeMapPreview = ""
+"let NERDTreeMapCloseDir = "n"
+"let NERDTreeMapChangeRoot = "y"
+"nerdtreegit
+"let g:NERDTreeIndicatorMapCustom = {
+    "\ "Modified"  : "✹",
+    "\ "Staged"    : "✚",
+    "\ "Untracked" : "✭",
+    "\ "Renamed"   : "➜",
+    "\ "Unmerged"  : "═",
+    "\ "Deleted"   : "✖",
+    "\ "Dirty"     : "✗",
+    "\ "Clean"     : "✔︎",
+    "\ "Unknown"   : "?"
+    "\ }
+
+
+
+"--
+"== vim-matchup ----------------------------------
+"--
+let g:loaded_matchit = 1
+
+
+"--
+"== easymotion ----------------------------------
+"--
+"两个字符 
+"nmap ff <Plug>(easymotion-s2)
+"单个字符 
+nmap ff <Plug>(easymotion-bd-f)
+"移动到列
+"nmap s <Plug>(easymotion-bd-jk)   
+"任意字符
+nmap fff <Plug>(easymotion-sn)
+"/替换成easymotion
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
+
+
+"--
+"== vim-smooth-scroll ----------------------------------
+"--
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+
+"--
+"== clever-f ----------------------------------
+"--
+let g:clever_f_smart_case = 1
+let g:clever_f_across_no_line = 0
+
+
+"--
+"== choosewin ----------------------------------
+"--
+nmap  -  <Plug>(choosewin)
+
 
 
 "--
@@ -158,55 +462,11 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 
 
 "--
-"== rnvimr ----------------------------------
+"== incsearch-fuzzy ----------------------------------
 "--
-let g:rnvimr_ex_enable = 1
-let g:rnvimr_pick_enable = 1
-nnoremap <silent> ra :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
-
-
-"--
-"== Far.vim ----------------------------------
-"--
-"noremap <LEADER>ff :F  **/*<left><left><left><left><left>
-"let g:far#mapping = {
-		"\ "replace_undo" : ["l"],
-		"\ }
-
-
-"==nerdtree
-"nmap tr :NERDTreeToggle<CR>	" 设置目录树快捷键
-"通过 h、j、k、l 来移动光标
-"o 打开关闭文件或目录，如果想打开文件，必须光标移动到文件名
-"t 在标签页中打开
-"s 和 i 可以水平或纵向分割窗口打开文件
-"p 到上层目录
-"P 到根目录
-"K 到同目录第一个节点
-"P 到同目录最后一个节点
-"let NERDTreeMapOpenExpl = ""
-"let NERDTreeMapUpdir = ""
-"let NERDTreeMapUpdirKeepOpen = "l"
-"let NERDTreeMapOpenSplit = ""
-"let NERDTreeOpenVSplit = ""
-"let NERDTreeMapActivateNode = "i"
-"let NERDTreeMapOpenInTab = "o"
-"let NERDTreeMapPreview = ""
-"let NERDTreeMapCloseDir = "n"
-"let NERDTreeMapChangeRoot = "y"
-"nerdtreegit
-"let g:NERDTreeIndicatorMapCustom = {
-    "\ "Modified"  : "✹",
-    "\ "Staged"    : "✚",
-    "\ "Untracked" : "✭",
-    "\ "Renamed"   : "➜",
-    "\ "Unmerged"  : "═",
-    "\ "Deleted"   : "✖",
-    "\ "Dirty"     : "✗",
-    "\ "Clean"     : "✔︎",
-    "\ "Unknown"   : "?"
-    "\ }
+map ? <Plug>(incsearch-fuzzy-/)
+map z/ <Plug>(incsearch-fuzzy-/)
+"map zg/ <Plug>(incsearch-fuzzy-stay)
 
 
 "==LeaderF
@@ -228,168 +488,20 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 "--
 "== ctrlsf ----------------------------------
 "--
-noremap <LEADER>f :CtrlSF 
-let g:ctrlsf_auto_focus = {
-    \ "at": "start"
-    \ }
+"noremap <LEADER>f :CtrlSF 
+"let g:ctrlsf_auto_focus = {
+    "\ "at": "start"
+    "\ }
 
 
 "--
-"== Vista ----------------------------------
+"== Far.vim ----------------------------------
 "--
-noremap <silent> tg :Vista!!<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-"set statusline+=%{NearestMethodOrFunction()}
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+"noremap <LEADER>ff :F  **/*<left><left><left><left><left>
+"let g:far#mapping = {
+		"\ "replace_undo" : ["l"],
+		"\ }
 
-
-"--
-"== tagbar ----------------------------------
-"--
-"nmap tg :TagbarToggle<CR>
-
-
-"--
-"== undotree ----------------------------------
-"--
-nnoremap un :UndotreeToggle<cr>
-set undodir=~/.config/nvim/tmp/undo  "记录在~/.undodir里 
-set undofile
-let g:undotree_DiffAutoOpen = 1
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_ShortIndicators = 1
-let g:undotree_WindowLayout = 2
-let g:undotree_DiffpanelHeight = 8
-let g:undotree_SplitWidth = 24
-function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
-endfunc
-
-
-"--
-"== rainbow_parentheses ----------------------------------
-"--
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-" 不加入这行, 防止黑色括号出现, 很难识别
-" \ ['black',       'SeaGreen3'],
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-
-"--
-"== vim-easy-align ----------------------------------
-"--
-vmap <Leader>a <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
-if !exists('g:easy_align_delimiters')
-  let g:easy_align_delimiters = {}
-endif
-let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
-
-
-"--
-"== vim-matchup ----------------------------------
-"--
-let g:loaded_matchit = 1
-
-
-"--
-"== indentLine ----------------------------------
-"--
-let g:indentLine_char = '¦'  ", '¦', '┆', '┊'
-"let g:indentLine_setColors = 0
-let g:indentLine_color_term = 17
-"let g:indentLine_noConcealCursor = ""
-let g:indentLine_bgcolor_gui = '#303030'
-
-
-"--
-"== easymotion ----------------------------------
-"--
-"两个字符 
-"nmap ff <Plug>(easymotion-s2)
-"单个字符 
-nmap ff <Plug>(easymotion-bd-f)
-"移动到列
-"nmap s <Plug>(easymotion-bd-jk)   
-"任意字符
-nmap fff <Plug>(easymotion-sn)
-"/替换成easymotion
-"map  / <Plug>(easymotion-sn)
-"omap / <Plug>(easymotion-tn)
-"map  n <Plug>(easymotion-next)
-"map  N <Plug>(easymotion-prev)
-
-
-"--
-"== clever-f ----------------------------------
-"--
-let g:clever_f_smart_case = 1
-let g:clever_f_across_no_line = 0
-
-
-"--
-"== incsearch-fuzzy ----------------------------------
-"--
-map ? <Plug>(incsearch-fuzzy-/)
-"map zg/ <Plug>(incsearch-fuzzy-stay)
-
-
-"--
-"== vim-smooth-scroll ----------------------------------
-"--
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-
-"--
-"== goyo ----------------------------------
-"--
-map <leader>gy :Goyo<CR>
-
-
-"--
-"== vim-autoformat ----------------------------------
-"--
-nnoremap <leader>fo :Autoformat<CR>
-"let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; eslint --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
-"let g:formatters_javascript = ['eslint']
-"let g:formatdef_my_html = '"html-beautify -s 2"'
 
 
 "--
@@ -402,6 +514,62 @@ cnoreabbrev gs Magit
 "== vim-git-log ----------------------------------
 "--
 cnoreabbrev gl GitLog
+
+
+
+"--
+"== vim-subversive ----------------------------------
+"--
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+nmap <leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader>s <plug>(SubversiveSubstituteRange)
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+"with abolish.vim
+nmap <leader><leader>s <plug>(SubversiveSubvertRange)
+xmap <leader><leader>s <plug>(SubversiveSubvertRange)
+nmap <leader><leader>ss <plug>(SubversiveSubvertWordRange)
+
+
+
+"--
+"== ZFDirDiff ----------------------------------
+"--
+"let g:ZFDirDiffKeymap_update = ['DD']
+"let g:ZFDirDiffKeymap_syncToHere = ['do', 'DH']
+"let g:ZFDirDiffKeymap_syncToThere = ['dp', 'DL']
+
+
+
+"--
+"== dict-vim ----------------------------------
+"--
+cnoreabbrev trans DictW
+nmap  <Leader>ddddd <Plug>DictSearch
+vmap  <Leader>ddddd <Plug>DictVSearch
+nmap  <Leader>ttttt <Plug>DictWSearch
+vmap  <Leader>ttt <Plug>DictWVSearch
+nmap  <Leader>rrrrr <Plug>DictRSearch
+vmap  <Leader>r <Plug>DictRVSearch
+
+
+"--
+"== vim-translator ----------------------------------
+"--
+"nmap  <Leader>t <Plug>Translate
+"vmap  <Leader>t <Plug>TranslateV
+" Display translation in a window
+"nmap  <Leader>t <Plug>TranslateW
+"vmap  <Leader>wwwww <Plug>TranslateWV
+"" Replace the text with translation
+"nmap  <Leader>r <Plug>TranslateR
+"vmap  <Leader>rrrrr <Plug>TranslateRV
+"hi def link TranslatorQuery             Identifier
+"hi def link TranslatorPhonetic          Type
+"hi def link TranslatorExplain           Statement
+"hi def link TranslatorDelimiter         Special
+
 
 
 "==ale
@@ -426,121 +594,26 @@ cnoreabbrev gl GitLog
 "nmap <Leader>d :ALEDetail<CR>
 
 
-"--
-"== Colorizer ----------------------------------
-"--
-"let g:colorizer_syntax = 1
-
 
 "--
-"== emmet-vim ----------------------------------
+"== ZFVimIM_pinyin ----------------------------------
 "--
-"let g:user_emmet_settings = {
-"            \ 'javascript.jsx': {
-"            \ 'extends' : 'jsx',
-"            \ },
-"            \}
-let g:user_emmet_leader_key = ','
+"nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
+"inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
+"vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
 
+"nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
+"inoremap <expr> ;: ZFVimIME_keymap_next_i()
+"vnoremap <expr> ;: ZFVimIME_keymap_next_v()
 
-"--
-"== MatchTagAlways ----------------------------------
-"--
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \}
-"改变颜色
-"let g:mta_set_default_matchtag_color=0
-"let g:mta_use_matchparen_group = 0
-"highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+"nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
+"inoremap <expr> ;, ZFVimIME_keymap_add_i()
+"xnoremap <expr> ;, ZFVimIME_keymap_add_v()
 
+"nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
+"inoremap <expr> ;. ZFVimIME_keymap_remove_i()
+"xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
 
-"--
-"== breeze ----------------------------------
-"--
-au BufNewFile,BufRead *.html
-    \ noremap tg :BreezePrintDom<cr>
-
-
-"--
-"== MarkdownPreview ----------------------------------
-"--
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
-
-
-"--
-"== vim-table-mode ----------------------------------
-"--
-noremap <LEADER>tm :TableModeToggle<CR>
-"let g:table_mode_disable_mappings = 1
-"let g:table_mode_cell_text_object_i_map = 'k<Bar>'
-"let g:table_mode_delimiter = ' '
-let g:table_mode_corner='|'
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
-
-"--
-"== dict-vim ----------------------------------
-"--
-cnoreabbrev trans DictW
-nmap  <Leader>ddddd <Plug>DictSearch
-vmap  <Leader>ddddd <Plug>DictVSearch
-nmap  <Leader>ttttt <Plug>DictWSearch
-vmap  <Leader>t <Plug>DictWVSearch
-nmap  <Leader>rrrrr <Plug>DictRSearch
-vmap  <Leader>r <Plug>DictRVSearch
-
-
-"--
-"== vim-translator ----------------------------------
-"--
-"nmap  <Leader>t <Plug>Translate
-"vmap  <Leader>t <Plug>TranslateV
-" Display translation in a window
-"nmap  <Leader>t <Plug>TranslateW
-"vmap  <Leader>wwwww <Plug>TranslateWV
-"" Replace the text with translation
-"nmap  <Leader>r <Plug>TranslateR
-"vmap  <Leader>rrrrr <Plug>TranslateRV
-"hi def link TranslatorQuery             Identifier
-"hi def link TranslatorPhonetic          Type
-"hi def link TranslatorExplain           Statement
-"hi def link TranslatorDelimiter         Special
 
 
 "--
@@ -553,31 +626,9 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 
 "--
-"== ZFVimIM_pinyin ----------------------------------
+"== vcoolor ----------------------------------
 "--
-nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
-inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
-vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
-
-nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
-inoremap <expr> ;: ZFVimIME_keymap_next_i()
-vnoremap <expr> ;: ZFVimIME_keymap_next_v()
-
-nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
-inoremap <expr> ;, ZFVimIME_keymap_add_i()
-xnoremap <expr> ;, ZFVimIME_keymap_add_v()
-
-nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
-inoremap <expr> ;. ZFVimIME_keymap_remove_i()
-xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
-
-
-"--
-"== ZFDirDiff ----------------------------------
-"--
-"let g:ZFDirDiffKeymap_update = ['DD']
-"let g:ZFDirDiffKeymap_syncToHere = ['do', 'DH']
-"let g:ZFDirDiffKeymap_syncToThere = ['dp', 'DL']
+cnoreabbrev color VCoolor
 
 
 "--
@@ -588,50 +639,11 @@ nnoremap <silent> <F9> :call codelf#start()<CR>
 
 
 "--
-"== vim-illuminate ----------------------------------
-"--
-let g:Illuminate_delay = 750
-hi illuminatedWord cterm=undercurl gui=undercurl
-
-
-"--
 "== thesaurus_query ----------------------------------
 "--
 "map <leader>th ：ThesaurusQueryReplaceCurrentWord <CR>
 "nnoremap  <Leader>th :ThesaurusQueryReplaceCurrentWord<CR>
 
-
-"--
-"== vcoolor ----------------------------------
-"--
-cnoreabbrev color VCoolor
-
-
-"--
-"== fastfold ----------------------------------
-"--
-"nmap zuz <Plug>(FastFoldUpdate)
-"let g:fastfold_savehook = 1
-"let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-"let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
-"let g:markdown_folding = 1
-"let g:tex_fold_enabled = 1
-"let g:vimsyn_folding = 'af'
-"let g:xml_syntax_folding = 1
-"let g:javaScript_fold = 1
-"let g:sh_fold_enabled= 7
-"let g:ruby_fold = 1
-"let g:perl_fold = 1
-"let g:perl_fold_blocks = 1
-"let g:r_syntax_folding = 1
-"let g:rust_fold = 1
-"let g:php_folding = 1
-
-
-"--
-"== choosewin ----------------------------------
-"--
-nmap  -  <Plug>(choosewin)
 
 
 "--
@@ -719,17 +731,9 @@ let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
 
 
 "--
-"== quick-scope ----------------------------------
-"--
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-
-
-"--
 "== echodoc.vim ----------------------------------
 "--
-set noshowmode
+"set noshowmode
 let g:echodoc_enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#enable_force_overwrite = 1
