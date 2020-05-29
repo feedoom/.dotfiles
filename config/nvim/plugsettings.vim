@@ -263,6 +263,14 @@ au Syntax * RainbowParenthesesLoadBraces
 
 
 "--
+"== tcomment_vim ----------------------------------
+"--
+let g:tcomment_textobject_inlinecomment = ''
+nmap <LEADER>/ gcc
+vmap <LEADER>/ gcc
+
+
+"--
 "== indentLine ----------------------------------
 "--
 let g:indentLine_char = '¦'  ", '¦', '┆', '┊'
@@ -283,6 +291,13 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 "== goyo ----------------------------------
 "--
 map <leader>gy :Goyo<CR>
+
+
+
+"--
+"== vim-after-object ----------------------------------
+"--
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 
 
 
@@ -374,6 +389,24 @@ let g:clever_f_across_no_line = 0
 "== choosewin ----------------------------------
 "--
 nmap  -  <Plug>(choosewin)
+
+
+"--
+"== t9md/vim-textmanip ----------------------------------
+"--
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <Space>d <Plug>(textmanip-duplicate-down)
+nmap <Space>d <Plug>(textmanip-duplicate-down)
+xmap <Space>D <Plug>(textmanip-duplicate-up)
+nmap <Space>D <Plug>(textmanip-duplicate-up)
+
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
+
+" toggle insert/replace with <F10>
+nmap <F10> <Plug>(textmanip-toggle-mode)
+xmap <F10> <Plug>(textmanip-toggle-mode)
 
 
 
@@ -546,12 +579,12 @@ nmap <leader><leader>ss <plug>(SubversiveSubvertWordRange)
 "== dict-vim ----------------------------------
 "--
 cnoreabbrev trans DictW
-nmap  <Leader>ddddd <Plug>DictSearch
-vmap  <Leader>ddddd <Plug>DictVSearch
-nmap  <Leader>ttttt <Plug>DictWSearch
-vmap  <Leader>ttt <Plug>DictWVSearch
+nmap  <Leader>dddddd <Plug>DictSearch
+vmap  <Leader>dddddd <Plug>DictVSearch
+nmap  <Leader>tttttt <Plug>DictWSearch
+vmap  <Leader>tttttt <Plug>DictWVSearch
 nmap  <Leader>rrrrr <Plug>DictRSearch
-vmap  <Leader>r <Plug>DictRVSearch
+vmap  <Leader>rrrrr <Plug>DictRVSearch
 
 
 "--
@@ -596,23 +629,43 @@ vmap  <Leader>r <Plug>DictRVSearch
 
 
 "--
+"== vimspector ----------------------------------
+"--
+let g:vimspector_enable_mappings = 'HUMAN'
+function! s:read_template_into_buffer(template)
+	" has to be a function to avoid the extra space fzf#run insers otherwise
+	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+endfunction
+command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+			\   'down': 20,
+			\   'sink': function('<sid>read_template_into_buffer')
+			\ })
+noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
+
+
+
+"--
 "== ZFVimIM_pinyin ----------------------------------
 "--
-"nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
-"inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
-"vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
+nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
+inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
+vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
 
-"nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
-"inoremap <expr> ;: ZFVimIME_keymap_next_i()
-"vnoremap <expr> ;: ZFVimIME_keymap_next_v()
+nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
+inoremap <expr> ;: ZFVimIME_keymap_next_i()
+vnoremap <expr> ;: ZFVimIME_keymap_next_v()
 
-"nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
-"inoremap <expr> ;, ZFVimIME_keymap_add_i()
-"xnoremap <expr> ;, ZFVimIME_keymap_add_v()
+nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
+inoremap <expr> ;, ZFVimIME_keymap_add_i()
+xnoremap <expr> ;, ZFVimIME_keymap_add_v()
 
-"nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
-"inoremap <expr> ;. ZFVimIME_keymap_remove_i()
-"xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
+nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
+inoremap <expr> ;. ZFVimIME_keymap_remove_i()
+xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
 
 
 
@@ -634,8 +687,8 @@ cnoreabbrev color VCoolor
 "--
 "== codelf ----------------------------------
 "--
-inoremap <silent> <F9> <C-R>=codelf#start()<CR>
-nnoremap <silent> <F9> :call codelf#start()<CR>
+" inoremap <silent> <F9> <C-R>=codelf#start()<CR>
+" nnoremap <silent> <F9> :call codelf#start()<CR>
 
 
 "--
@@ -668,6 +721,12 @@ let g:current_line_whitespace_disabled_hard=1
 let g:better_whitespace_filetypes_blacklist=[ 'diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+
+"--
+"== vim-rooter ---------------------------------
+"--
+let g:rooter_patterns = ['__vim_project_root', '.git/']
 
 
 "--
@@ -734,6 +793,8 @@ let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
 "== echodoc.vim ----------------------------------
 "--
 "set noshowmode
-let g:echodoc_enable_at_startup = 1
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#enable_force_overwrite = 1
+"let g:echodoc_enable_at_startup = 1
+"let g:echodoc#enable_at_startup = 1
+"let g:echodoc#enable_force_overwrite = 1
+
+

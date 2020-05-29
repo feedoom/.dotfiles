@@ -124,7 +124,7 @@ au BufNewFile,BufRead *.html
 set fileformat=unix
 "补全设置
 set wildmenu                   " 命令模式下补全以菜单形式显示
-set wildmode=list,longest,full " 命令模式补全模式
+"set wildmode=list,longest,full " 命令模式补全模式
 "set completeopt=longest,menu,preview
 "set complete=.,w,b,u,t
 "回车完成补全 
@@ -235,9 +235,6 @@ else
   cnoreabbrev sw :w !sudo tee %<CR>
 endif
 
-"注释
-map <C-\> <leader>c<space>
-map <leader>/ <leader>c<space>
 "插入模式下移动 
 "inoremap ll <right>
 "inoremap <a-l> <right>
@@ -355,6 +352,7 @@ if &term =~ '256color' && $TMUX != ''
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
 endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
 "compilerun

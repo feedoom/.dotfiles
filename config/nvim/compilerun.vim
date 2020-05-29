@@ -1,5 +1,6 @@
 " 运行当前文件
 noremap <F5> :call CompileRunGcc()<CR>
+" noremap <leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'

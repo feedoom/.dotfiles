@@ -9,7 +9,10 @@ Plug 'ryanoasis/vim-devicons'
 "Plug 'itchyny/lightline.vim'
 "Plug 'liuchengxu/eleline.vim'
 Plug 'bling/vim-bufferline'
-Plug 'bling/vim-airline'
+Plug 'osyo-manga/vim-anzu'               "显示搜索
+Plug 'mg979/vim-xtabline'
+Plug 'theniceboy/eleline.vim'
+"Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'connorholyday/vim-snazzy'
 "Plug 'flazz/vim-colorschemes'
@@ -72,7 +75,8 @@ Plug 'junegunn/vim-easy-align'           " 对齐
 
 "Editor Enhancement
 Plug 'kien/rainbow_parentheses.vim'      " 括号高亮
-Plug 'scrooloose/nerdcommenter'          " 注释
+" Plug 'scrooloose/nerdcommenter'          " 注释
+Plug 'tomtom/tcomment_vim'               " 注释
 "Plug 'jiangmiao/auto-pairs'              " 自动匹配括号
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'               " 缩进线
@@ -82,11 +86,17 @@ Plug 'AndrewRadev/splitjoin.vim'         "gS单行转多行,gJ多行转单行
 Plug 'tpope/vim-repeat'                  " 重复操作
 Plug 'tpope/vim-speeddating'             "递增减
 Plug 'junegunn/goyo.vim'
+Plug 'terryma/vim-expand-region'          " +,_,增加可视模式选择的文本
 
 
 "textobj
-Plug 'kana/vim-textobj-user'             "文本对象 
-Plug 'kana/vim-textobj-line'             "行文本对象
+Plug 'kana/vim-textobj-user'              "文本对象 
+Plug 'kana/vim-textobj-line'              "行文本对象
+Plug 'coderifous/textobj-word-column.vim' "列文本对象
+Plug 'junegunn/vim-after-object'          " -, :, #, =
+Plug 'vim-scripts/argtextobj.vim'         "argument
+"Plug 'rhysd/vim-textobj-anyblock'         " b instead ', (), {}, [] and <>
+" Plug 'wellle/targets.vim'
 
 
 "File tree
@@ -101,7 +111,8 @@ Plug 'easymotion/vim-easymotion'         " 快速跳转
 Plug 'terryma/vim-smooth-scroll'         "更好的滚动
 Plug 'rhysd/clever-f.vim'                "增强f,F
 Plug 't9md/vim-choosewin'                "跳转窗口
-Plug 'matze/vim-move'                    "alt-h,j,k,l to move text
+Plug 't9md/vim-textmanip'                "ctrl-h,j,k,l to move text
+Plug 'tommcdo/vim-exchange'              "cx{motion} 交互文本
 
 
 "search
@@ -127,11 +138,13 @@ Plug 'junkblocker/git-time-lapse'        "当前文件 git diff
 "subversive
 Plug 'svermeulen/vim-subversive'         "快速替换
 Plug 'tpope/vim-abolish'                 "替换
+Plug 'markonm/traces.vim'                "预览:s/old/new/
 
 
 "diff
 "Plug 'ZSaberLv0/ZFVimDirDiff'            " 文件对比
 Plug 'AndrewRadev/linediff.vim'          "两个代码块diff visual模式下Linediff
+Plug 'chrisbra/vim-diff-enhanced'
 
 
 " translator
@@ -144,18 +157,23 @@ Plug 'iamcco/dict.vim'
 "Plug 'dense-analysis/ale'
 
 
+" debug
+" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --force-enable-java --force-enable-chrome'}
+
+
 "输入法
-"Plug 'ZSaberLv0/ZFVimIM'
-"Plug 'ZSaberLv0/ZFVimIM_pinyin'
-"Plug 'ZSaberLv0/ZFVimJob'               " optional, for async db update
+Plug 'ZSaberLv0/ZFVimIM'
+Plug 'ZSaberLv0/ZFVimIM_pinyin'
+Plug 'ZSaberLv0/ZFVimJob'               " optional, for async db update
+" Plug 'ZSaberLv0/ZFVimIM_pinyin_huge'
 "Plug 'vim-scripts/fcitx.vim'
 
 
 "others
-Plug 'lambdalisue/suda.vim'              "sudo 写入
+Plug 'lambdalisue/suda.vim'              " sudo 写入
 Plug 'sheerun/vim-polyglot'              " 语法扩展
 Plug 'KabbAmine/vCoolor.vim'             "调色板
-Plug 'voldikss/vim-codelf'               " 变量命名
+" Plug 'voldikss/vim-codelf'               " 变量命名
 Plug 'yianwillis/vimcdoc'                " vim中文文档
 Plug 'vim-utils/vim-man'                 "vim open man for :Vman
 Plug 'mhinz/vim-startify'                " 开始页面
@@ -163,19 +181,22 @@ Plug 'airblade/vim-rooter'               "切换项目根目录
 Plug 'skywind3000/quickmenu.vim'         "帮助菜单
 Plug 'makerj/vim-pdf'
 Plug 'DataWraith/auto_mkdir'             "自动创建中间的目录结构
+Plug 'wellle/visual-split.vim'           "将文本固定到分屏上
+Plug 'tpope/vim-unimpaired'              "[]代替互补的快捷键,如[b,]b代替bn,bp
+Plug 'mtth/scratch.vim'                  "临时buffer
+Plug 'Ron89/thesaurus_query.vim'         "近义词查找
 "Plug 'Shougo/echodoc.vim'                "参数提示
 "Plug 'voldikss/vim-hello-word'
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'hotoo/pangu.vim'                   "中文排版
 "Plug 'pechorin/any-jump.vim'
 "Plug 'junegunn/vim-peekaboo'            " 寄存器
-"Plug 'ron89/thesaurus_query.vim'        "近义词查找
 "Plug 'jceb/vim-orgmode'
 "Plug 'vimwiki/vimwiki'
-"Plug 'puremourning/vimspector'           "debug
 "Plug 'hiberabyss/NeovimGdb'
 "Plug 'ianding1/leetcode.vim'
-"Plug 'jpalardy/vim-slime'
 "Plug 'KabbAmine/zeavim.vim'              "文档
+" Plug 'TimothyYe/vim-ydict'
 
 call plug#end()
+

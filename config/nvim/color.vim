@@ -103,3 +103,28 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
 "let g:airline_extensions = ['tabline', 'branch', 'bufferline', 'coc']
+
+
+"--
+"== xtabline ----------------------------------
+"--
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.last_open_first = 1
+noremap to :XTabCycleMode<CR>
+noremap \p :XTabInfo<CR>
+
+
+"--
+"== vim-anzu----------------------------------
+"--
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
