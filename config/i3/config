@@ -417,15 +417,14 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec_always --no-startup-id fcitx
-exec_always --no-startup-id albert
-exec_always --no-startup-id variety
-exec_always --no-startup-id tilda 
-#exec_always --no-startup-id guake
-bindsym $mod+Return exec alacritty #st 
+bindsym $mod+Return exec deepin-terminal #alacritty #st 
 bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec dde-file-manager
 bindsym $mod+c exec google-chrome-stable
 for_window [class="yakuake"] floating enable
 
-exec --no-startup-id xset dpms 7200 7200
+exec_always --no-startup-id fcitx
+exec_always --no-startup-id albert
+exec_always --no-startup-id variety
+exec_always --no-startup-id tilda 
+#exec_always --no-startup-id guake

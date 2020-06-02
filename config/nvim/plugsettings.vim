@@ -1,7 +1,6 @@
 "--
 "== coc ----------------------------------
 "--
-"set completeopt=menu,menuone,noselect "vim-dict 补全设置
 set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -267,7 +266,7 @@ au Syntax * RainbowParenthesesLoadBraces
 "--
 let g:tcomment_textobject_inlinecomment = ''
 nmap <LEADER>/ gcc
-vmap <LEADER>/ gcc
+vmap <LEADER>/ gc
 
 
 "--
@@ -687,8 +686,8 @@ cnoreabbrev color VCoolor
 "--
 "== codelf ----------------------------------
 "--
-" inoremap <silent> <F9> <C-R>=codelf#start()<CR>
-" nnoremap <silent> <F9> :call codelf#start()<CR>
+inoremap <silent> <F9> <C-R>=codelf#start()<CR>
+nnoremap <silent> <F9> :call codelf#start()<CR>
 
 
 "--
@@ -759,6 +758,21 @@ call quickmenu#append("goyo", 'Goyo', "")
 
 
 "--
+"== floaterm ----------------------------------
+"--
+nmap <leader>x :FloatermNew<space>
+let g:floaterm_winblend = 11
+let g:floaterm_keymap_toggle = '<leader>fh'
+let g:floaterm_keymap_kill = '<leader>fk'
+
+
+"--
+"== peekaboo ----------------------------------
+"--
+let g:peekaboo_prefix = '@'
+
+
+"--
 "== leetcode ----------------------------------
 "--
 let g:leetcode_china = 1
@@ -796,5 +810,4 @@ let g:helloword_vocabulary_path = '~/.config/nvim/word/CET6.json'
 "let g:echodoc_enable_at_startup = 1
 "let g:echodoc#enable_at_startup = 1
 "let g:echodoc#enable_force_overwrite = 1
-
 

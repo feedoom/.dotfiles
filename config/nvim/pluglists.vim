@@ -112,6 +112,7 @@ Plug 'terryma/vim-smooth-scroll'         "更好的滚动
 Plug 'rhysd/clever-f.vim'                "增强f,F
 Plug 't9md/vim-choosewin'                "跳转窗口
 Plug 't9md/vim-textmanip'                "ctrl-h,j,k,l to move text
+Plug 'matze/vim-move'                    "alt-h,j,k,l to move text
 Plug 'tommcdo/vim-exchange'              "cx{motion} 交互文本
 
 
@@ -120,6 +121,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'haya14busa/incsearch.vim'          "模糊搜素
 Plug 'haya14busa/incsearch-fuzzy.vim'    "模糊搜素
+Plug 'junegunn/vim-slash'                 " 优化搜索，移动光标后清除高亮
 "Plug 'Yggdroot/LeaderF'
 "Plug 'dyng/ctrlsf.vim'  "搜索文件内的代码
 "Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
@@ -172,31 +174,33 @@ Plug 'ZSaberLv0/ZFVimJob'               " optional, for async db update
 "others
 Plug 'lambdalisue/suda.vim'              " sudo 写入
 Plug 'sheerun/vim-polyglot'              " 语法扩展
-Plug 'KabbAmine/vCoolor.vim'             "调色板
-" Plug 'voldikss/vim-codelf'               " 变量命名
+Plug 'KabbAmine/vCoolor.vim'             " 调色板
+Plug 'voldikss/vim-codelf'               " 变量命名
 Plug 'yianwillis/vimcdoc'                " vim中文文档
-Plug 'vim-utils/vim-man'                 "vim open man for :Vman
+Plug 'vim-utils/vim-man'                 " vim open man for :Vman
 Plug 'mhinz/vim-startify'                " 开始页面
-Plug 'airblade/vim-rooter'               "切换项目根目录 
-Plug 'skywind3000/quickmenu.vim'         "帮助菜单
+Plug 'airblade/vim-rooter'               " 切换项目根目录 
+Plug 'skywind3000/quickmenu.vim'         " 帮助菜单
 Plug 'makerj/vim-pdf'
-Plug 'DataWraith/auto_mkdir'             "自动创建中间的目录结构
-Plug 'wellle/visual-split.vim'           "将文本固定到分屏上
-Plug 'tpope/vim-unimpaired'              "[]代替互补的快捷键,如[b,]b代替bn,bp
-Plug 'mtth/scratch.vim'                  "临时buffer
-Plug 'Ron89/thesaurus_query.vim'         "近义词查找
-"Plug 'Shougo/echodoc.vim'                "参数提示
+Plug 'DataWraith/auto_mkdir'             " 自动创建中间的目录结构
+Plug 'wellle/visual-split.vim'           " 将文本固定到分屏上
+Plug 'tpope/vim-unimpaired'              " []代替互补的快捷键,如[b,]b代替bn,bp
+Plug 'mtth/scratch.vim'                  " 临时buffer
+Plug 'Ron89/thesaurus_query.vim'         " 近义词查找
+Plug 'voldikss/vim-floaterm'             " 悬浮终端
+Plug 'junegunn/vim-peekaboo'             " 寄存器
+Plug 'ianding1/leetcode.vim'
+" Plug 'Shougo/echodoc.vim'                "参数提示
 "Plug 'voldikss/vim-hello-word'
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'hotoo/pangu.vim'                   "中文排版
 "Plug 'pechorin/any-jump.vim'
-"Plug 'junegunn/vim-peekaboo'            " 寄存器
 "Plug 'jceb/vim-orgmode'
 "Plug 'vimwiki/vimwiki'
 "Plug 'hiberabyss/NeovimGdb'
-"Plug 'ianding1/leetcode.vim'
 "Plug 'KabbAmine/zeavim.vim'              "文档
 " Plug 'TimothyYe/vim-ydict'
+" Plug 'vim-ctrlspace/vim-ctrlspace'
 
 call plug#end()
 

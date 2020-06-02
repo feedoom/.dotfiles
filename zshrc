@@ -231,6 +231,9 @@ alias caj='~/Downloads/CAJViewer-x86_64-libc-2.24.AppImage'
 alias tm='tmux'
 alias q='exit'
 alias sudo='sudo -E'
+# trash-cli in ~/.local/share/Trash
+alias rm='trash-put'
+alias rmrm='trash-empty'
 
 
 #欢迎语
