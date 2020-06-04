@@ -158,6 +158,9 @@ nnoremap > >>
 noremap <silent><F3> :nohls<CR>
 noremap <silent><space> :nohls<CR>
 set pastetoggle=<F2> "F2进入粘贴模式
+" 添加空行
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " 标签页 
 map tn :tabnext<CR>

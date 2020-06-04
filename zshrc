@@ -178,6 +178,14 @@ ex () {
     }
 
 
+# transfer.sh
+transfer() {
+    curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename "$1") | tee /dev/null;
+    echo
+}
+alias transfer=transfer
+
+
 eval "$(thefuck --alias)"
 export TERM=xterm-256color
 export TERM_ITALICS=true
