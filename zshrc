@@ -13,7 +13,7 @@ fi
 ZSH_THEME="crunch"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 
 #Plugins
@@ -196,14 +196,11 @@ export EDITOR=nvim
 #bindkey '^v' edit-command-line
 
 
-alias c='clear'
 #alias cdiff='colordiff'
 #alias cs='calcurse'
 #alias dv='deactivate'
 #alias lg='lazygit'
 #alias mt='neomutt'
-alias ra='ranger'
-#alias feem='~/Feem_v4.3.0_For_Linux.AppImage'
 alias tran='trans -sp en:zh'
 alias neo='neofetch'
 alias one='onefetch'
@@ -221,7 +218,6 @@ alias cd...='cd ../../../'
 alias diff='icdiff'
 alias manv='viman'
 alias what='cheat'
-alias nv='nvim'
 alias you='you-get'
 alias ari='aria2c'
 alias send='qrcp'
@@ -242,11 +238,16 @@ alias sudo='sudo -E'
 # trash-cli in ~/.local/share/Trash
 alias rm='trash-put'
 alias rmrm='trash-empty'
+alias nv='nvim'
+alias ra='ranger'
+alias c='clear'
+alias cat='ccat'
 
 
 #欢迎语
-#echo  "talk is cheap,show me the code" | boxes -d stone | lolcat 
+clear
 catsay  talk is cheap,show me the code | lolcat
-#fortune | catsay | lolcat
-#neofetch
 
+export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
+alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
+alias java='java -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'

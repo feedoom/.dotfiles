@@ -107,8 +107,8 @@ let g:mta_filetypes = {
 "--
 "== breeze ----------------------------------
 "--
-au BufNewFile,BufRead *.html
-    \ noremap tg :BreezePrintDom<cr>
+" au BufNewFile,BufRead *.html
+"     \ noremap tg :BreezePrintDom<cr>
 
 
 

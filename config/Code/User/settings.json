@@ -1,39 +1,103 @@
 {
     "files.autoSave": "off",
     "window.zoomLevel": 1,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    //底栏
-    "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "SynthWave '84",
-    // "workbench.iconTheme": "vscode-icons",
-    //不要高亮相同的单词
-    "editor.occurrencesHighlight": false,
-    //右边的导航大纲
-    "editor.minimap.enabled": false,
+
+    "editor.wordWrap": "on",
     "editor.fontSize": 18,
-    "editor.suggestSelection": "first",
     "editor.defaultFormatter": "formulahendry.code-runner",
     "editor.fontFamily": "'Source Code Pro Medium'",
+    "editor.quickSuggestions": true,
+    "editor.parameterHints.enabled": true,
+    "editor.smoothScrolling": true,
+    "editor.suggestSelection": "first",
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "One Dark Pro",
+
     "terminal.integrated.fontFamily": "'Source Code Pro Medium'",
     "terminal.integrated.shell.linux": "/usr/bin/zsh",
-    "latex-workshop.view.pdf.viewer": "external",
+
     "breadcrumbs.enabled": false,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.semanticHighlighting.enabled": true,
+
+    //不要高亮相同的单词
+    "editor.occurrencesHighlight": false,
+
+    //右边的导航大纲
+    "editor.minimap.enabled": false,
+
+    //导航路径
+    "breadcrumbs.enabled": true,
+
+
+    //空格可见
+    "editor.renderWhitespace": "all",
+
+    //文件末尾另起一行
+    "files.insertFinalNewline": true,
+
+    //剪裁尾部空格
+    "files.trimTrailingWhitespace": true,
+
+    //忽略文件
+    "files.exclude": {
+        "**/.history": true,
+        "**/node_modules": true
+    },
+
+    "latex-workshop.view.pdf.viewer": "external",
+
+    //图标
+    "workbench.iconTheme": "vscode-great-icons",
+
+    //clipboard manager
+    "clipboard-manager.preview": false, 
+    "clipboard-manager.snippet.enabled": false,
+
+    //liveServer
+    "liveServer.settings.donotShowInfoMsg": true,
+
+    //leetcode
     "leetcode.endpoint": "leetcode-cn",
+
     "translator.translateOnHover":true,
-    // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "cSpell.userWords": [
         "lsdjfslf"
     ],
+
+    //todo tree
     "todo-tree.tree.showScanModeButton": false,
+
+    //sync
     "sync.gist": "142e96bf6cf128e420a00d0c51bb87df",
     "sync.autoDownload": false,
     "sync.autoUpload": false,
     "sync.quietSync": true,
     "sync.forceUpload": true,
-    "vim.easymotion": false,
-    "vim.sneak": false,
+
+    //eslint
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+
+    //prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    //vim
+    // vim输入法
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
+    //"vim.statusBarColorControl": false,
+    "vim.easymotion": true,
+    "vim.sneak": true,
     "vim.incsearch": false,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
@@ -45,15 +109,31 @@
             "after": ["<Esc>"]
         },
         {
-            "before": ["l", "l"],
+            "before": ["<C-l>"],
             "after": ["<Right>"]
         },
         {
-            "before": ["h", "h"],
+            "before": ["<C-h>"],
             "after": ["<Left>"]
         }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        {
+            "before": ["g", "j"],
+            "after": ["j"]
+        },
+        {
+            "before": ["g", "k"],
+            "after": ["k"]
+        },
         {
             "before": ["<leader>", "n"],
             "commands": [":nohl"]
@@ -80,7 +160,7 @@
         },
         {
             "before": ["L"],
-            "after": ["$"]
+            "after": ["g", "_"]
         },
         {
             "before": ["H"],
@@ -88,11 +168,7 @@
         },
         {
             "before": ["`"],
-            "after": ["b", "~"]
-        },
-        {
-            "before": [ "<leader>", "<space>" ],
-            "commands": [ "workbench.action.showCommands" ]
+            "after": ["b", "~", "w"]
         },
         {
             "before": [ "<leader>", "f", "S" ],
@@ -105,6 +181,14 @@
         {
             "before": [ "<leader>", "f" ],
             "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": [ "<leader>", "/" ],
+            "after": [ "g", "c", "c" ]
+        },
+        {
+            "before": [ "f", "f" ],
+            "after": [ "<leader>", "<leader>", "s" ]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -121,6 +205,10 @@
             "commands": [
                 "Translate and Show in Bubble"
             ]
+        },
+        {
+            "before": [ "<leader>", "/" ],
+            "after": [ "g", "c" ]
         }
     ],
     "vim.leader": "<space>",

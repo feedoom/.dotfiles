@@ -57,7 +57,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 #bindsym $mod+F2 exec palemoon
-#bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -417,9 +417,9 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Return exec deepin-terminal #alacritty #st 
+bindsym $mod+Return exec alacritty #st deepin-teminal
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec dde-file-manager
+# bindsym $mod+F3 exec dde-file-manager
 bindsym $mod+c exec google-chrome-stable
 for_window [class="yakuake"] floating enable
 
