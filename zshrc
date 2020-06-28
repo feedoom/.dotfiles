@@ -1,63 +1,58 @@
-#export ZSH="/home/feedoom/.oh-my-zsh"
-
-#manjaro pacman install setting
 export ZSH=/usr/share/oh-my-zsh
+
+ZSH_THEME="crunch"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="random"
-ZSH_THEME="crunch"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
+source $ZSH/oh-my-zsh.sh
 
 #Plugins
 if [[ ! -d ~/.config/zsh/fzf-tab ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
 fi
-source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
 
-source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 
 plugins=(git
     last-working-dir
     catimg
     web-search
     extract
+    vi-mode
     autojump)
 source $ZSH/oh-my-zsh.sh
+
+source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-
-
-#--
-#== vim --------------------
-#--
-#bindkey '^v' edit-command-line
-#vi-mode
-bindkey -v
-bindkey -M vicmd "H" vi-beginning-of-line
-bindkey -M vicmd "L" vi-end-of-line
-bindkey -M vicmd "m" vi-cmd-mode
-#bindkey '^?'
-bindkey '^_' vi-history-search-backward
-bindkey '^n' up-line-or-search
-bindkey '^b' vi-backward-blank-word
-bindkey '^d' backward-delete-word
+##--
+##== vim --------------------
+##--
+##bindkey '^v' edit-command-line
+##vi-mode
+#bindkey -v
+#bindkey -M vicmd "H" vi-beginning-of-line
+#bindkey -M vicmd "L" vi-end-of-line
+#bindkey -M vicmd "m" vi-cmd-mode
+##bindkey '^?'
+#bindkey '^_' vi-history-search-backward
+#bindkey '^n' up-line-or-search
+#bindkey '^b' vi-backward-blank-word
+#bindkey '^d' backward-delete-word
 
 function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-        echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-  fi
+   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+       echo -ne '\e[1 q'
+   elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+       echo -ne '\e[5 q'
+ fi
 }
 zle -N zle-keymap-select
 
@@ -74,7 +69,7 @@ echo -ne '\e[5 q'
 
 # Use beam shape cursor for each new prompt.
 preexec() {
-    echo -ne '\e[5 q'
+   echo -ne '\e[5 q'
 }
 
 _fix_cursor() {
@@ -245,7 +240,7 @@ alias cat='ccat'
 
 
 #欢迎语
-clear
+# clear
 catsay  talk is cheap,show me the code | lolcat
 
 export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar

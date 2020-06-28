@@ -86,6 +86,7 @@ Plug 'tpope/vim-repeat'                                             " 重复操�
 Plug 'tpope/vim-speeddating'                                        " 递增减
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-expand-region'                                    " +,_,增加可视模式选择的文本
+" Plug 'kshenoy/vim-signature'                                        " mark
 
 
 "textobj
@@ -104,16 +105,10 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
-"move
-Plug 'andymass/vim-matchup'                                         " %快速跳转
-Plug 'easymotion/vim-easymotion'                                    " 快速跳转
-Plug 'terryma/vim-smooth-scroll'                                    " 更好的滚动
-Plug 'rhysd/clever-f.vim'                                           " 增强f,F
-Plug 't9md/vim-choosewin'                                           " 跳转窗口
-Plug 't9md/vim-textmanip'                                           " ctrl-h,j,k,l to move text
-Plug 'matze/vim-move'                                               " alt-h,j,k,l to move text
-Plug 'tommcdo/vim-exchange'                                         " cx{motion} 交互文本
-Plug 'justinmk/vim-sneak'                                           " s快速跳转两个字符间
+"subversive
+Plug 'svermeulen/vim-subversive'                                    " 快速替换
+Plug 'tpope/vim-abolish'                                            " subversive depend
+Plug 'markonm/traces.vim'                                           " 预览:s/old/new/
 
 
 "search
@@ -138,10 +133,16 @@ Plug 'junegunn/gv.vim'
 Plug 'junkblocker/git-time-lapse'                                   " 当前文件 git diff
 
 
-"subversive
-Plug 'svermeulen/vim-subversive'                                    " 快速替换
-Plug 'tpope/vim-abolish'                                            " subversive depend
-Plug 'markonm/traces.vim'                                           " 预览:s/old/new/
+"move
+Plug 'andymass/vim-matchup'                                         " %快速跳转
+Plug 'easymotion/vim-easymotion'                                    " 快速跳转
+Plug 'terryma/vim-smooth-scroll'                                    " 更好的滚动
+Plug 'rhysd/clever-f.vim'                                           " 增强f,F
+Plug 't9md/vim-choosewin'                                           " 跳转窗口
+Plug 't9md/vim-textmanip'                                           " ctrl-h,j,k,l to move text
+Plug 'matze/vim-move'                                               " alt-h,j,k,l to move text
+Plug 'tommcdo/vim-exchange'                                         " cx{motion} 交互文本
+Plug 'justinmk/vim-sneak'
 
 
 "diff
@@ -165,9 +166,9 @@ Plug 'iamcco/dict.vim'
 
 
 "输入法
-Plug 'ZSaberLv0/ZFVimIM'
-Plug 'ZSaberLv0/ZFVimIM_pinyin'
-Plug 'ZSaberLv0/ZFVimJob'                                           " optional, for async db update
+" Plug 'ZSaberLv0/ZFVimIM'
+" Plug 'ZSaberLv0/ZFVimIM_pinyin'
+" Plug 'ZSaberLv0/ZFVimJob'                                           " optional, for async db update
 " Plug 'ZSaberLv0/ZFVimIM_pinyin_huge'
 "Plug 'vim-scripts/fcitx.vim'
 
@@ -180,7 +181,7 @@ Plug 'voldikss/vim-codelf'                                          " 变量命�
 Plug 'yianwillis/vimcdoc'                                           " vim中文文档
 Plug 'vim-utils/vim-man'                                            " vim open man for :Vman
 Plug 'mhinz/vim-startify'                                           " 开始页面
-Plug 'airblade/vim-rooter'                                          " 切换项目根目录 
+" Plug 'airblade/vim-rooter'                                          " 切换项目根目录 
 Plug 'skywind3000/quickmenu.vim'                                    " 帮助菜单
 Plug 'makerj/vim-pdf'
 Plug 'DataWraith/auto_mkdir'                                        " 自动创建中间的目录结构

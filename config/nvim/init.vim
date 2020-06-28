@@ -128,6 +128,7 @@ set expandtab                                             " tab转为空格
 "==
 let mapleader="\<space>"
 noremap <c-z> <nop>
+noremap s <nop>
 noremap Q :q<CR>
 noremap W :w<CR>
 " Press <SPACE> + q to close the window below the current window
@@ -146,7 +147,7 @@ noremap <C-j> 5<C-e>
 "clipboard system
 vnoremap Y "+y
 "ctrl+u转换大小写
-inoremap <C-u> <esc>gUiwea   
+inoremap <C-u> <esc>vE~ea
 "转换首单词大小写
 noremap ` b~ 
 noremap fi :r !figlet 
@@ -403,4 +404,3 @@ source ~/.config/nvim/color.vim
 
 "==plug_settings
 source ~/.config/nvim/plugsettings.vim
-

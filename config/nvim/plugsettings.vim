@@ -70,6 +70,18 @@ vmap <Leader>t <Plug>(coc-translator-pv)
 " replace result on current expression
 nmap <Leader>cr <Plug>(coc-calc-result-replace)
 
+"coc-bookmark
+cnoreabbrev bt CocCommand bookmark.toggle
+cnoreabbrev bl CocList bookmark
+nmap <Leader>bj <Plug>(coc-bookmark-next)
+nmap <Leader>bk <Plug>(coc-bookmark-prev)
+cnoreabbrev bc CocCommand bookmark.clearForCurrentFile
+
+"coc-todolist
+cnoreabbrev tt CocCommand todolist.create
+cnoreabbrev tl CocList todolist
+cnoreabbrev tc CocCommand todolist.clear
+
 
 
 "--
@@ -292,6 +304,13 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 map <leader>gy :Goyo<CR>
 
 
+"==
+"== vim-expand-region
+"==
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
+
 
 "--
 "== vim-after-object ----------------------------------
@@ -345,67 +364,18 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
 "--
-"== vim-matchup ----------------------------------
+"== vim-subversive ----------------------------------
 "--
-let g:loaded_matchit = 1
-
-
-"--
-"== easymotion ----------------------------------
-"--
-"两个字符 
-"nmap ff <Plug>(easymotion-s2)
-"单个字符 
-nmap ff <Plug>(easymotion-bd-f)
-"移动到列
-"nmap s <Plug>(easymotion-bd-jk)   
-"任意字符
-nmap fff <Plug>(easymotion-sn)
-"/替换成easymotion
-"map  / <Plug>(easymotion-sn)
-"omap / <Plug>(easymotion-tn)
-"map  n <Plug>(easymotion-next)
-"map  N <Plug>(easymotion-prev)
-
-
-"--
-"== vim-smooth-scroll ----------------------------------
-"--
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-
-"--
-"== clever-f ----------------------------------
-"--
-let g:clever_f_smart_case = 1
-let g:clever_f_across_no_line = 0
-
-
-"--
-"== choosewin ----------------------------------
-"--
-nmap  -  <Plug>(choosewin)
-
-
-"--
-"== t9md/vim-textmanip ----------------------------------
-"--
-xmap <C-j> <Plug>(textmanip-move-down)
-xmap <Space>d <Plug>(textmanip-duplicate-down)
-nmap <Space>d <Plug>(textmanip-duplicate-down)
-xmap <Space>D <Plug>(textmanip-duplicate-up)
-nmap <Space>D <Plug>(textmanip-duplicate-up)
-
-xmap <C-k> <Plug>(textmanip-move-up)
-xmap <C-h> <Plug>(textmanip-move-left)
-xmap <C-l> <Plug>(textmanip-move-right)
-
-" toggle insert/replace with <F10>
-nmap <F10> <Plug>(textmanip-toggle-mode)
-xmap <F10> <Plug>(textmanip-toggle-mode)
+" nmap s <plug>(SubversiveSubstitute)
+" nmap ss <plug>(SubversiveSubstituteLine)
+" nmap S <plug>(SubversiveSubstituteToEndOfLine)
+nmap <leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader>s <plug>(SubversiveSubstituteRange)
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+"with abolish.vim
+nmap <leader><leader>s <plug>(SubversiveSubvertRange)
+xmap <leader><leader>s <plug>(SubversiveSubvertRange)
+nmap <leader><leader>ss <plug>(SubversiveSubvertWordRange)
 
 
 
@@ -550,18 +520,74 @@ cnoreabbrev gl GitLog
 
 
 "--
-"== vim-subversive ----------------------------------
+"== vim-matchup ----------------------------------
 "--
-nmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
-nmap S <plug>(SubversiveSubstituteToEndOfLine)
-nmap <leader>s <plug>(SubversiveSubstituteRange)
-xmap <leader>s <plug>(SubversiveSubstituteRange)
-nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
-"with abolish.vim
-nmap <leader><leader>s <plug>(SubversiveSubvertRange)
-xmap <leader><leader>s <plug>(SubversiveSubvertRange)
-nmap <leader><leader>ss <plug>(SubversiveSubvertWordRange)
+let g:loaded_matchit = 1
+
+
+"--
+"== easymotion ----------------------------------
+"--
+"两个字符 
+"nmap ff <Plug>(easymotion-s2)
+"单个字符 
+nmap ff <Plug>(easymotion-bd-f)
+"移动到列
+"nmap s <Plug>(easymotion-bd-jk)   
+"任意字符
+nmap fff <Plug>(easymotion-sn)
+"/替换成easymotion
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
+
+
+"--
+"== vim-smooth-scroll ----------------------------------
+"--
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+
+"--
+"== clever-f ----------------------------------
+"--
+let g:clever_f_smart_case = 1
+let g:clever_f_across_no_line = 0
+
+
+"--
+"== choosewin ----------------------------------
+"--
+nmap  -  <Plug>(choosewin)
+
+
+"--
+"== t9md/vim-textmanip ----------------------------------
+"--
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <Space>d <Plug>(textmanip-duplicate-down)
+nmap <Space>d <Plug>(textmanip-duplicate-down)
+xmap <Space>D <Plug>(textmanip-duplicate-up)
+nmap <Space>D <Plug>(textmanip-duplicate-up)
+
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
+
+" toggle insert/replace with <F10>
+nmap <F10> <Plug>(textmanip-toggle-mode)
+xmap <F10> <Plug>(textmanip-toggle-mode)
+
+
+"==
+"== vim-sneak
+"==
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
 
 
 
