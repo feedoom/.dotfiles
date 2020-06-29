@@ -162,6 +162,8 @@ set pastetoggle=<F2> "F2进入粘贴模式
 " 添加空行
 nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+"添加日期
+imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 
 " 标签页 
 map tn :tabnext<CR>
@@ -404,3 +406,4 @@ source ~/.config/nvim/color.vim
 
 "==plug_settings
 source ~/.config/nvim/plugsettings.vim
+
