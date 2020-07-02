@@ -86,7 +86,7 @@ Plug 'tpope/vim-repeat'                                             " 重复操�
 Plug 'tpope/vim-speeddating'                                        " 递增减
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-expand-region'                                    " +,_,增加可视模式选择的文本
-" Plug 'kshenoy/vim-signature'                                        " mark
+Plug 'MattesGroeger/vim-bookmarks'
 
 
 "textobj

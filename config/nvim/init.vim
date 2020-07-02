@@ -146,10 +146,10 @@ noremap <C-k> 5<C-y>
 noremap <C-j> 5<C-e>
 "clipboard system
 vnoremap Y "+y
-"ctrl+u转换大小写
-inoremap <C-u> <esc>vE~ea
+"alt+u转换大小写
+inoremap <a-u> <esc>bvE~ea
 "转换首单词大小写
-noremap ` b~ 
+inoremap <C-u> <esc>b~ea
 noremap fi :r !figlet 
 "z= 显示建议
 noremap <leader>sp :set spell!<CR> 
