@@ -5,7 +5,7 @@ set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh', 'coc-word', 'coc-highlight', 'coc-pairs', 'coc-calc', 'coc-todolist']
+let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
         let col = col('.') - 1
@@ -654,46 +654,46 @@ vmap  <Leader>rrrrr <Plug>DictRVSearch
 "nmap <Leader>d :ALEDetail<CR>
 
 
+"
+""--
+""== vimspector ----------------------------------
+""--
+"let g:vimspector_enable_mappings = 'HUMAN'
+"function! s:read_template_into_buffer(template)
+"	" has to be a function to avoid the extra space fzf#run insers otherwise
+"	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+"endfunction
+"command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+"			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+"			\   'down': 20,
+"			\   'sink': function('<sid>read_template_into_buffer')
+"			\ })
+"noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+"sign define vimspectorBP text=☛ texthl=Normal
+"sign define vimspectorBPDisabled text=☞ texthl=Normal
+"sign define vimspectorPC text=🔶 texthl=SpellBad
+"
 
-"--
-"== vimspector ----------------------------------
-"--
-let g:vimspector_enable_mappings = 'HUMAN'
-function! s:read_template_into_buffer(template)
-	" has to be a function to avoid the extra space fzf#run insers otherwise
-	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
-endfunction
-command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-			\   'down': 20,
-			\   'sink': function('<sid>read_template_into_buffer')
-			\ })
-noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-sign define vimspectorBP text=☛ texthl=Normal
-sign define vimspectorBPDisabled text=☞ texthl=Normal
-sign define vimspectorPC text=🔶 texthl=SpellBad
-
-
-
-"--
-"== ZFVimIM_pinyin ----------------------------------
-"--
-nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
-inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
-vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
-
-nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
-inoremap <expr> ;: ZFVimIME_keymap_next_i()
-vnoremap <expr> ;: ZFVimIME_keymap_next_v()
-
-nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
-inoremap <expr> ;, ZFVimIME_keymap_add_i()
-xnoremap <expr> ;, ZFVimIME_keymap_add_v()
-
-nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
-inoremap <expr> ;. ZFVimIME_keymap_remove_i()
-xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
-
+"
+""--
+""== ZFVimIM_pinyin ----------------------------------
+""--
+"nnoremap <expr><silent> ;; ZFVimIME_keymap_toggle_n()
+"inoremap <expr> ;; ZFVimIME_keymap_toggle_i()
+"vnoremap <expr> ;; ZFVimIME_keymap_toggle_v()
+"
+"nnoremap <expr><silent> ;: ZFVimIME_keymap_next_n()
+"inoremap <expr> ;: ZFVimIME_keymap_next_i()
+"vnoremap <expr> ;: ZFVimIME_keymap_next_v()
+"
+"nnoremap <expr><silent> ;, ZFVimIME_keymap_add_n()
+"inoremap <expr> ;, ZFVimIME_keymap_add_i()
+"xnoremap <expr> ;, ZFVimIME_keymap_add_v()
+"
+"nnoremap <expr><silent> ;. ZFVimIME_keymap_remove_n()
+"inoremap <expr> ;. ZFVimIME_keymap_remove_i()
+"xnoremap <expr> ;. ZFVimIME_keymap_remove_v()
+"
 
 
 "--

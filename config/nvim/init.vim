@@ -51,20 +51,20 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 " au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
-
-" ##### auto fcitx  ###########
-let g:input_toggle = 1
-function! Fcitx2en()
-    let s:input_status = system("fcitx-remote")
-    if s:input_status == 2
-        let g:input_toggle = 1
-        let l:a = system("fcitx-remote -c")
-    endif
-endfunction
-set ttimeoutlen=150
-"退出插入模式
-autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
-
+"
+"" ##### auto fcitx  ###########
+"let g:input_toggle = 1
+"function! Fcitx2en()
+"    let s:input_status = system("fcitx-remote")
+"    if s:input_status == 2
+"        let g:input_toggle = 1
+"        let l:a = system("fcitx-remote -c")
+"    endif
+"endfunction
+"set ttimeoutlen=150
+""退出插入模式
+"autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
+"
 
 
 "==
@@ -168,6 +168,8 @@ imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 " 标签页 
 map tn :tabnext<CR>
 map tp :tabp<CR>
+cnoreabbrev e tabedit
+cnoreabbrev bn tabnext
 cnoreabbrev t tabedit
 function Switchsplit()
     let path=expand('%:p')
@@ -225,17 +227,10 @@ else
 endif
 
 "插入模式下移动 
-"inoremap ll <right>
-"inoremap <a-l> <right>
 inoremap <c-l> <right>
-"inoremap hh <left>
-"inoremap <a-h> <Left>
 inoremap <c-h> <Left>
-"inoremap <c-h> <esc>ha
-"inoremap <c-k> <up>
-"inoremap <a-k> <up>
 inoremap <c-j> <down>
-"inoremap <a-j> <down>
+inoremap <c-k> <up>
 "emacs key
 "inoremap <m-b> <c-left>
 "inoremap <m-f> <c-right>
@@ -251,14 +246,6 @@ else
     cnoreabbrev vimrc :e ~/.vimrc
 endif
 cnoreabbrev zshrc :e ~/.zshrc
-
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-h> <Home>
-cnoremap <C-l> <End>
-cnoremap <c-n> <down>
-cnoremap <c-p> <up>
 
 "搜索结果居中展示
 nnoremap <silent> n nzz
@@ -363,13 +350,19 @@ endif
 set shell=\"/usr/bin/zsh"\ -f
 tnoremap <c-q> <c-\><c-n>
 "set shell=\"/usr/bin/fish"\ -f
-"noremap <c-d> :sh<cr>
 "tnoremap <c-h> <c-\><c-n><c-w>h
 "tnoremap <c-l> <c-\><c-n><c-w>l
 "tnoremap <c-j> <c-\><c-n><c-w>j
 "tnoremap <c-k> <c-\><c-n><c-w>k
 "打开终端
 nnoremap <F4> :call OpenTerminal()<cr> 
+" 命令行模式增强，ctrl - a到行首， -e 到行尾
+" cnoremap <C-j> <t_kd>
+" cnoremap <C-k> <t_ku>
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
 
 
 " 特定文件缩排

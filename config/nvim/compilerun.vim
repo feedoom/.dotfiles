@@ -25,12 +25,12 @@ func! CompileRunGcc()
 		:sp
 		:term python3 %
 	elseif &filetype == 'html'
-        "silent! exec "!".g:mkdp_browser." % &"
-        if empty(glob('~/.config/nvim/plugged/bracey.vim/'))
-            silent! exec "!".g:mkdp_browser." % &"
-        else
-            :Bracey
-        endif
+        silent! exec "!".g:mkdp_browser." % &"
+        " if empty(glob('~/.config/nvim/plugged/bracey.vim/'))
+        "     silent! exec "!".g:mkdp_browser." % &"
+        " else
+        "     :Bracey
+        " endif
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
     elseif &filetype == 'javascript'

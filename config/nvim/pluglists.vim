@@ -18,7 +18,8 @@ Plug 'theniceboy/eleline.vim'
 "Plug 'ajmwagar/vim-deus'
 " Plug 'megantiu/true.vim'
 "Plug 'liuchengxu/space-vim-theme'
-Plug 'rakr/vim-one'
+" Plug 'rakr/vim-one'
+Plug 'artanikin/vim-synthwave84'
 " Plug 'dracula/vim'
 "Plug 'atahabaki/archman-vim'
 "Plug 'wdhg/dragon-energy'
@@ -44,7 +45,7 @@ Plug 'Valloric/MatchTagAlways', { 'for': ['vim-plug', 'html']}      " 高亮匹�
 Plug 'alvan/vim-closetag', { 'for': ['vim-plug', 'html'] }          " 自动关闭标签
 Plug 'AndrewRadev/tagalong.vim'                                     " 同时修改html标签
 "html 预览
-Plug 'turbio/bracey.vim'
+" Plug 'turbio/bracey.vim'
 Plug 'jaxbot/browserlink.vim'
 " Plug 'idanarye/breeze.vim'                                          " html dom
 
@@ -76,7 +77,7 @@ Plug 'junegunn/vim-easy-align'                                      " 对齐
 Plug 'kien/rainbow_parentheses.vim'                                 " 括号高亮
 " Plug 'scrooloose/nerdcommenter'                                     " 注释
 Plug 'tomtom/tcomment_vim'                                          " 注释
-"Plug 'jiangmiao/auto-pairs'                                          " 自动匹配括号
+Plug 'jiangmiao/auto-pairs'                                          " 自动匹配括号
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'                                          " 缩进线
 Plug 'mg979/vim-visual-multi'                                       " 多光标
@@ -203,6 +204,8 @@ Plug 'junegunn/vim-peekaboo'                                        " 寄存器
 "Plug 'KabbAmine/zeavim.vim'                                          " 文档
 " Plug 'TimothyYe/vim-ydict'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'nightsense/cosmic_latte'
+Plug 'nightsense/stellarized'
 
 call plug#end()
 

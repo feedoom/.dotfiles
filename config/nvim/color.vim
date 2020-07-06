@@ -16,9 +16,11 @@
 set background=dark    " Setting dark mode
 "colorscheme space_vim_theme
 "colorscheme deus
-colorscheme one
+" colorscheme one
 "colorscheme dracula
 "colorscheme snazzy
+colorscheme synthwave84
+hi MatchParen ctermbg=magenta guibg=#2C2560
 
 
 "--
@@ -85,25 +87,25 @@ let g:startify_custom_header = [
 \ '',
 \]
 
-
-"--
-"== airline ----------------------------------
-"--
-"let g:airline_theme='molokai'
-let g:airline_theme='deus'
-"let g:airline_theme='dark'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = '⎇'
-let g:airline#extensions#hunks#enabled = 0
-let g:airline_section_warning = ''
-let g:airline_section_error = ''
-"let g:airline_extensions = ['tabline', 'branch', 'bufferline', 'coc']
-
+"
+""--
+""== airline ----------------------------------
+""--
+""let g:airline_theme='molokai'
+"let g:airline_theme='deus'
+""let g:airline_theme='dark'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.branch = '⎇'
+"let g:airline#extensions#hunks#enabled = 0
+"let g:airline_section_warning = ''
+"let g:airline_section_error = ''
+""let g:airline_extensions = ['tabline', 'branch', 'bufferline', 'coc']
+"
 
 "--
 "== xtabline ----------------------------------
