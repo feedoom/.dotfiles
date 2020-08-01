@@ -1,6 +1,9 @@
 "--
 "== coc ----------------------------------
 "--
+if has("win64")
+    let g:coc_data_home = 'D:\Neovim\settings\coc'
+endif
 set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -40,7 +43,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -171,7 +174,6 @@ inoreabbrev <expr> __
 "== undotree ----------------------------------
 "--
 nnoremap un :UndotreeToggle<cr>
-set undodir=~/.config/nvim/tmp/undo  "记录在~/.undodir里 
 set undofile
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1

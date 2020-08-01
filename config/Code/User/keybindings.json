@@ -1,4 +1,9 @@
 [
+    //{
+    //    "key": "tab",
+    //    "command": "editor.action.triggerSuggest",
+    //    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    //},
     {
         "key": "tab",
         "command": "-acceptSelectedSuggestion",

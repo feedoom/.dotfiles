@@ -13,7 +13,11 @@
 "else
 "    source ~/.config/nvim/default_configs/vim_auto.vim
 "endif
-source ~/.config/nvim/default_configs/machine_specific_default.vim
+if has("unix")
+    source ~/.config/nvim/default_configs/machine_specific_default.vim
+elseif has("win64")
+    source D:\Neovim\settings\default_configs\machine_specific_default.vim
+endif
 
 
 " 根据不同模式改变光标
@@ -166,10 +170,14 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 
 " 标签页 
-map tn :tabnext<CR>
-map tp :tabp<CR>
-cnoreabbrev e tabedit
-cnoreabbrev bn tabnext
+nnoremap tn :tabnext<CR>
+nnoremap tp :tabp<CR>
+noremap ]b :bnext<CR>
+noremap [b :bprevious<CR>
+" cnoreabbrev e tabedit
+" cnoreabbrev bn tabnext
+nnoremap R gt
+nnoremap E gT
 cnoreabbrev t tabedit
 function Switchsplit()
     let path=expand('%:p')
@@ -309,14 +317,26 @@ au BufNewFile,BufRead *.html
 "==
 "set nobackup
 "set noswapfile
-silent !mkdir -p ~/.config/nvim/tmp/backup
-silent !mkdir -p ~/.config/nvim/tmp/undo
-silent !mkdir -p ~/.config/nvim/tmp/sessions
-set backupdir=~/.config/nvim/tmp/backup,.
-set directory=~/.config/nvim/tmp/backup,.
-if has('persistent_undo')
-	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
+if has("unix")
+    silent !mkdir -p ~/.config/nvim/tmp/backup
+    silent !mkdir -p ~/.config/nvim/tmp/undo
+    silent !mkdir -p ~/.config/nvim/tmp/sessions
+    set backupdir=~/.config/nvim/tmp/backup,.
+    set directory=~/.config/nvim/tmp/backup,.
+    if has('persistent_undo')
+        set undofile
+        set undodir=~/.config/nvim/tmp/undo,.
+    endif
+elseif has("win64")
+    silent !mkdir D:\Neovim\settings\tmp\backup
+    silent !mkdir D:\Neovim\settings\tmp\undo
+    silent !mkdir D:\Neovim\settings\tmp\sessions
+    set backupdir=D:\Neovim\settings\tmp\backup,.
+    set directory=D:\Neovim\settings\tmp\backup,.
+    if has('persistent_undo')
+        set undofile
+        set undodir=D:\Neovim\settings\tmp\undo,.
+    endif
 endif
 
 
@@ -338,7 +358,9 @@ else
    :call term_start('bash', {'curwin' : 1, 'term_finish' : 'close'})
   endf
 endif
-set shell=\"/usr/bin/zsh"\ -f
+if has("unix")
+    set shell=\"/usr/bin/zsh"\ -f
+endif
 tnoremap <c-q> <c-\><c-n>
 "set shell=\"/usr/bin/fish"\ -f
 "tnoremap <c-h> <c-\><c-n><c-w>h
@@ -371,23 +393,26 @@ au BufNewFile,BufRead *.html
     \ set shiftwidth=2     |
 
 
-"compilerun
-source ~/.config/nvim/compilerun.vim
-
-
-"==markdown
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
-source ~/.config/nvim/md-snippets.vim
 
 
-"==plug
-source ~/.config/nvim/pluglists.vim
 
-
-"==colorscheme
-source ~/.config/nvim/color.vim
-
-
-"==plug_settings
-source ~/.config/nvim/plugsettings.vim
+if has("unix")
+    "compilerun
+    source ~/.config/nvim/compilerun.vim
+    "==markdown
+    source ~/.config/nvim/md-snippets.vim
+    "==plug
+    source ~/.config/nvim/pluglists.vim
+    "==colorscheme
+    source ~/.config/nvim/color.vim
+    "==plug_settings
+    source ~/.config/nvim/plugsettings.vim
+elseif has("win64")
+    source D:\Neovim\settings\compilerun.vim
+    source D:\Neovim\settings\md-snippets.vim
+    source D:\Neovim\settings\pluglists.vim
+    source D:\Neovim\settings\color.vim
+    source D:\Neovim\settings\plugsettings.vim
+endif
 

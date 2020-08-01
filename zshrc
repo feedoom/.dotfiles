@@ -1,4 +1,5 @@
-export ZSH=/usr/share/oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+# export ZSH=/usr/share/oh-my-zsh
 
 ZSH_THEME="crunch"
 
@@ -13,10 +14,17 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 #Plugins
+# zsh-autopair
+if [[ ! -d ~/.config/zsh/zsh-autopair  ]]; then
+      git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh/zsh-autopair
+fi
+
+# fzf-tab
 if [[ ! -d ~/.config/zsh/fzf-tab ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
 fi
 
+# autopair-init
 
 plugins=(git
     last-working-dir
@@ -27,10 +35,13 @@ plugins=(git
     autojump)
 source $ZSH/oh-my-zsh.sh
 
+source ~/.config/zsh/zsh-autopair/autopair.zsh
 source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
-source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ##--
 ##== vim --------------------
@@ -201,8 +212,8 @@ alias neo='neofetch'
 alias one='onefetch'
 alias manl='tldr'
 #alias ls='lsd'
-alias ls='exa --colour always --icons'
-alias la='exa --colour always --icons -a'
+# alias ls='exa --colour always --icons'
+# alias la='exa --colour always --icons -a'
 alias hei='cmatrix'
 alias cd1='cd ../'
 alias cd.='cd ../'
@@ -226,23 +237,25 @@ alias gs='git status'
 alias gc='git commit'
 alias gl='tig'
 alias gp='git push -u origin master'
-alias caj='~/Downloads/CAJViewer-x86_64-libc-2.24.AppImage'
+# alias caj='~/Downloads/CAJViewer-x86_64-libc-2.24.AppImage'
 alias tm='tmux'
 alias q='exit'
 alias sudo='sudo -E'
 # trash-cli in ~/.local/share/Trash
-alias rm='trash-put'
-alias rmrm='trash-empty'
+# alias rm='trash-put'
+# alias rmrm='trash-empty'
 alias nv='nvim'
 alias ra='ranger'
 alias c='clear'
-alias cat='ccat'
+# alias cat='ccat'
 
 
 #欢迎语
 # clear
-catsay  talk is cheap,show me the code | lolcat
+cowsay  talk is cheap,show me the code | lolcat
+cd
 
 export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
 alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
 alias java='java -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
+

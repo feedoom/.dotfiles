@@ -2,7 +2,11 @@
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "vim-plug插件
-call plug#begin('~/.config/nvim/plugged')
+if has("unix")
+    call plug#begin('~/.config/nvim/plugged')
+elseif has("win64")
+    call plug#begin('D:\Neovim\settings\plugged')
+endif
 
 "pretty
 Plug 'ryanoasis/vim-devicons'
@@ -41,19 +45,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "html,css,js
 "Plug 'chrisbra/Colorizer'
 Plug 'mattn/emmet-vim', { 'for': ['vim-plug', 'html']}
-Plug 'Valloric/MatchTagAlways', { 'for': ['vim-plug', 'html']}      " 高亮匹配标签
+" Plug 'Valloric/MatchTagAlways', { 'for': ['vim-plug', 'html']}      " 高亮匹配标签
 Plug 'alvan/vim-closetag', { 'for': ['vim-plug', 'html'] }          " 自动关闭标签
 Plug 'AndrewRadev/tagalong.vim'                                     " 同时修改html标签
 "html 预览
 " Plug 'turbio/bracey.vim'
-Plug 'jaxbot/browserlink.vim'
+" Plug 'jaxbot/browserlink.vim'
 " Plug 'idanarye/breeze.vim'                                          " html dom
 
 
 "markdown
 Plug 'theniceboy/bullets.vim', { 'for': ['vim-plug', 'markdown'] }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for' :['markdown', 'vim-plug'] }
+if has("unix")
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+endif
 
 
 " undo tree
@@ -101,7 +107,9 @@ Plug 'vim-scripts/argtextobj.vim'                                     " argument
 
 
 "File tree
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+if has("unix")
+    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+endif
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -113,8 +121,10 @@ Plug 'markonm/traces.vim'                                           " 预览:s/o
 
 
 "search
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+if has("unix")
+    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
 Plug 'haya14busa/incsearch.vim'                                     " 模糊搜素
 Plug 'haya14busa/incsearch-fuzzy.vim'                               " 模糊搜素
 Plug 'junegunn/vim-slash'                                           " 优化搜索，移动光标后清除高亮
@@ -175,12 +185,14 @@ Plug 'iamcco/dict.vim'
 
 
 "others
-Plug 'lambdalisue/suda.vim'                                         " sudo 写入
+if has("unix")
+    Plug 'lambdalisue/suda.vim'                                         " sudo 写入
+    Plug 'vim-utils/vim-man'                                            " vim open man for :Vman
+    Plug 'yianwillis/vimcdoc'                                           " vim中文文档
+endif
 Plug 'sheerun/vim-polyglot'                                         " 语法扩展
 Plug 'KabbAmine/vCoolor.vim'                                        " 调色板
 Plug 'voldikss/vim-codelf'                                          " 变量命名
-Plug 'yianwillis/vimcdoc'                                           " vim中文文档
-Plug 'vim-utils/vim-man'                                            " vim open man for :Vman
 Plug 'mhinz/vim-startify'                                           " 开始页面
 " Plug 'airblade/vim-rooter'                                          " 切换项目根目录 
 Plug 'skywind3000/quickmenu.vim'                                    " 帮助菜单
