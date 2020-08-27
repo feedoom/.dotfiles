@@ -1,3 +1,7 @@
+if [[ ! -d ~/.oh-my-zsh ]]; then
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
 export ZSH=$HOME/.oh-my-zsh
 # export ZSH=/usr/share/oh-my-zsh
 
@@ -23,6 +27,7 @@ fi
 if [[ ! -d ~/.config/zsh/fzf-tab ]]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
 fi
+
 
 # autopair-init
 
@@ -253,7 +258,7 @@ alias c='clear'
 #欢迎语
 # clear
 cowsay  talk is cheap,show me the code | lolcat
-cd
+# cd
 
 export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
 alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'

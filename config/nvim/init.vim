@@ -13,11 +13,7 @@
 "else
 "    source ~/.config/nvim/default_configs/vim_auto.vim
 "endif
-if has("unix")
-    source ~/.config/nvim/default_configs/machine_specific_default.vim
-elseif has("win64")
-    source D:\Neovim\settings\default_configs\machine_specific_default.vim
-endif
+source ~/.config/nvim/default_configs/machine_specific_default.vim
 
 
 " 根据不同模式改变光标
@@ -317,26 +313,14 @@ au BufNewFile,BufRead *.html
 "==
 "set nobackup
 "set noswapfile
-if has("unix")
-    silent !mkdir -p ~/.config/nvim/tmp/backup
-    silent !mkdir -p ~/.config/nvim/tmp/undo
-    silent !mkdir -p ~/.config/nvim/tmp/sessions
-    set backupdir=~/.config/nvim/tmp/backup,.
-    set directory=~/.config/nvim/tmp/backup,.
-    if has('persistent_undo')
-        set undofile
-        set undodir=~/.config/nvim/tmp/undo,.
-    endif
-elseif has("win64")
-    silent !mkdir D:\Neovim\settings\tmp\backup
-    silent !mkdir D:\Neovim\settings\tmp\undo
-    silent !mkdir D:\Neovim\settings\tmp\sessions
-    set backupdir=D:\Neovim\settings\tmp\backup,.
-    set directory=D:\Neovim\settings\tmp\backup,.
-    if has('persistent_undo')
-        set undofile
-        set undodir=D:\Neovim\settings\tmp\undo,.
-    endif
+silent !mkdir -p ~/.config/nvim/tmp/backup
+silent !mkdir -p ~/.config/nvim/tmp/undo
+silent !mkdir -p ~/.config/nvim/tmp/sessions
+set backupdir=~/.config/nvim/tmp/backup,.
+set directory=~/.config/nvim/tmp/backup,.
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.config/nvim/tmp/undo,.
 endif
 
 
@@ -395,24 +379,13 @@ au BufNewFile,BufRead *.html
 
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
+source ~/.config/nvim/compilerun.vim
 
+source ~/.config/nvim/md-snippets.vim
 
-if has("unix")
-    "compilerun
-    source ~/.config/nvim/compilerun.vim
-    "==markdown
-    source ~/.config/nvim/md-snippets.vim
-    "==plug
-    source ~/.config/nvim/pluglists.vim
-    "==colorscheme
-    source ~/.config/nvim/color.vim
-    "==plug_settings
-    source ~/.config/nvim/plugsettings.vim
-elseif has("win64")
-    source D:\Neovim\settings\compilerun.vim
-    source D:\Neovim\settings\md-snippets.vim
-    source D:\Neovim\settings\pluglists.vim
-    source D:\Neovim\settings\color.vim
-    source D:\Neovim\settings\plugsettings.vim
-endif
+source ~/.config/nvim/pluglists.vim
+
+source ~/.config/nvim/color.vim
+
+source ~/.config/nvim/plugsettings.vim
 

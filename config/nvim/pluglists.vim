@@ -2,11 +2,7 @@
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "vim-plug插件
-if has("unix")
-    call plug#begin('~/.config/nvim/plugged')
-elseif has("win64")
-    call plug#begin('D:\Neovim\settings\plugged')
-endif
+call plug#begin('~/.config/nvim/plugged')
 
 "pretty
 Plug 'ryanoasis/vim-devicons'
@@ -57,9 +53,7 @@ Plug 'AndrewRadev/tagalong.vim'                                     " 同时修�
 "markdown
 Plug 'theniceboy/bullets.vim', { 'for': ['vim-plug', 'markdown'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for' :['markdown', 'vim-plug'] }
-if has("unix")
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-endif
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 
 
 " undo tree
@@ -107,11 +101,9 @@ Plug 'vim-scripts/argtextobj.vim'                                     " argument
 
 
 "File tree
-if has("unix")
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-endif
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
 "subversive
@@ -121,10 +113,8 @@ Plug 'markonm/traces.vim'                                           " 预览:s/o
 
 
 "search
-if has("unix")
-    Plug 'junegunn/fzf.vim'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-endif
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'haya14busa/incsearch.vim'                                     " 模糊搜素
 Plug 'haya14busa/incsearch-fuzzy.vim'                               " 模糊搜素
 Plug 'junegunn/vim-slash'                                           " 优化搜索，移动光标后清除高亮
@@ -185,11 +175,9 @@ Plug 'iamcco/dict.vim'
 
 
 "others
-if has("unix")
-    Plug 'lambdalisue/suda.vim'                                         " sudo 写入
-    Plug 'vim-utils/vim-man'                                            " vim open man for :Vman
-    Plug 'yianwillis/vimcdoc'                                           " vim中文文档
-endif
+Plug 'lambdalisue/suda.vim'                                         " sudo 写入
+Plug 'vim-utils/vim-man'                                            " vim open man for :Vman
+Plug 'yianwillis/vimcdoc'                                           " vim中文文档
 Plug 'sheerun/vim-polyglot'                                         " 语法扩展
 Plug 'KabbAmine/vCoolor.vim'                                        " 调色板
 Plug 'voldikss/vim-codelf'                                          " 变量命名

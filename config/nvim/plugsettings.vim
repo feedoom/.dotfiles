@@ -8,7 +8,8 @@ set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-html', 'coc-css', 'coc-phpls', 'coc-java', 'coc-vetur', 'coc-xml', 'coc-tsserver', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-sh', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
+" 'coc-explorer', , 'coc-vetur'
+let g:coc_global_extensions = [ 'coc-html', 'coc-css', 'coc-xml', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
         let col = col('.') - 1
@@ -333,7 +334,7 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
 "==nerdtree
-"nmap tr :NERDTreeToggle<CR>	" 设置目录树快捷键
+" nmap tr :NERDTreeToggle<CR>
 "通过 h、j、k、l 来移动光标
 "o 打开关闭文件或目录，如果想打开文件，必须光标移动到文件名
 "t 在标签页中打开
@@ -342,28 +343,28 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 "P 到根目录
 "K 到同目录第一个节点
 "P 到同目录最后一个节点
-"let NERDTreeMapOpenExpl = ""
-"let NERDTreeMapUpdir = ""
-"let NERDTreeMapUpdirKeepOpen = "l"
-"let NERDTreeMapOpenSplit = ""
-"let NERDTreeOpenVSplit = ""
-"let NERDTreeMapActivateNode = "i"
-"let NERDTreeMapOpenInTab = "o"
-"let NERDTreeMapPreview = ""
-"let NERDTreeMapCloseDir = "n"
-"let NERDTreeMapChangeRoot = "y"
-"nerdtreegit
-"let g:NERDTreeIndicatorMapCustom = {
-    "\ "Modified"  : "✹",
-    "\ "Staged"    : "✚",
-    "\ "Untracked" : "✭",
-    "\ "Renamed"   : "➜",
-    "\ "Unmerged"  : "═",
-    "\ "Deleted"   : "✖",
-    "\ "Dirty"     : "✗",
-    "\ "Clean"     : "✔︎",
-    "\ "Unknown"   : "?"
-    "\ }
+" let NERDTreeMapOpenExpl = ""
+" let NERDTreeMapUpdir = ""
+" let NERDTreeMapUpdirKeepOpen = "l"
+" let NERDTreeMapOpenSplit = ""
+" let NERDTreeOpenVSplit = ""
+" let NERDTreeMapActivateNode = "i"
+" let NERDTreeMapOpenInTab = "o"
+" let NERDTreeMapPreview = ""
+" let NERDTreeMapCloseDir = "n"
+" let NERDTreeMapChangeRoot = "y"
+" nerdtreegit
+" let g:NERDTreeIndicatorMapCustom = {
+"     \ "Modified"  : "✹",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "✭",
+"     \ "Renamed"   : "➜",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "✖",
+"     \ "Dirty"     : "✗",
+"     \ "Clean"     : "✔︎",
+"     \ "Unknown"   : "?"
+"     \ }
 
 
 
