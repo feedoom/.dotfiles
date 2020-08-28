@@ -9,7 +9,7 @@ set complete=.,w,b,u,t
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 " 'coc-explorer', , 'coc-vetur'
-let g:coc_global_extensions = [ 'coc-html', 'coc-css', 'coc-xml', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
+let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-xml', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
         let col = col('.') - 1
@@ -792,7 +792,10 @@ call quickmenu#append("goyo", 'Goyo', "")
 "== floaterm ----------------------------------
 "--
 nmap <leader>x :FloatermNew<space>
-let g:floaterm_winblend = 11
+nmap ra :FloatermNew ranger<cr>
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+let g:floaterm_winblend = 5
 let g:floaterm_keymap_toggle = '<leader>fh'
 let g:floaterm_keymap_kill = '<leader>fk'
 
