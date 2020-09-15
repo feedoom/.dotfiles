@@ -135,7 +135,7 @@ noremap W :w<CR>
 noremap <LEADER>q <C-w>j:q<CR>
 noremap U <C-r>
 noremap u :u<CR>
-nnoremap ; :
+" nnoremap ; :
 vnoremap ; :
 inoremap jj <Esc>
 noremap H ^
@@ -259,7 +259,7 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 " 调整缩进后自动选中，方便再次操作
-vnoremap < <gv      
+vnoremap < <gv
 vnoremap > >gv
 
 " 选中并高亮最后一次插入的内容

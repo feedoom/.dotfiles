@@ -252,6 +252,7 @@ alias sudo='sudo -E'
 alias nv='nvim'
 alias ra='ranger'
 alias c='clear'
+alias open='explorer.exe .'
 # alias cat='ccat'
 
 
@@ -260,7 +261,7 @@ alias c='clear'
 cowsay  talk is cheap,show me the code | lolcat
 # cd
 
-export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
-alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
-alias java='java -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
+# export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
+# alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
+# alias java='java -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
 

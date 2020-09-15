@@ -8,22 +8,22 @@ set complete=.,w,b,u,t
 "inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-" 'coc-explorer', , 'coc-vetur'
-let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-xml', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
+" 'coc-explorer', 'coc-vetur',
+let g:coc_global_extensions = ['coc-cssmodules', 'coc-tailwindcss', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-xml', 'coc-snippets', 'coc-translator', 'coc-lists', 'coc-yank', 'coc-json', 'coc-emmet', 'coc-marketplace', 'coc-word', 'coc-highlight', 'coc-calc', 'coc-todolist']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]=~ '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]=~ '\s'
 endfunction
 inoremap <silent><expr> <Tab>
-                        \ pumvisible() ? "\<C-n>" :
-                        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-                        \ <SID>check_back_space() ? "\<Tab>" :
-                        \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 function! s:check_back_space() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 let g:coc_snippet_next = '<tab>'
@@ -46,11 +46,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Use K to show documentation in preview window.
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -102,11 +102,11 @@ let g:user_emmet_leader_key = ','
 "== MatchTagAlways ----------------------------------
 "--
 let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \}
+            \ 'html' : 1,
+            \ 'xhtml' : 1,
+            \ 'xml' : 1,
+            \ 'jinja' : 1,
+            \}
 "改变颜色
 "let g:mta_set_default_matchtag_color=0
 "let g:mta_use_matchparen_group = 0
@@ -133,14 +133,14 @@ let g:mkdp_open_ip = ''
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
+            \ 'mkit': {},
+            \ 'katex': {},
+            \ 'uml': {},
+            \ 'maid': {},
+            \ 'disable_sync_scroll': 0,
+            \ 'sync_scroll_type': 'middle',
+            \ 'hide_yaml_meta': 1
+            \ }
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
@@ -156,18 +156,18 @@ noremap <LEADER>tm :TableModeToggle<CR>
 "let g:table_mode_delimiter = ' '
 let g:table_mode_corner='|'
 function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+    let text_before_cursor = getline('.')[0 : col('.')-1]
+    let mapping_pattern = '\V' . escape(a:mapping, '\')
+    let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+    return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
 endfunction
 
 inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+            \ <SID>isAtStartOfLine('\|\|') ?
+            \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
 inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+            \ <SID>isAtStartOfLine('__') ?
+            \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 
 
@@ -183,10 +183,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
+    nmap <buffer> u <plug>UndotreeNextState
+    nmap <buffer> e <plug>UndotreePreviousState
+    nmap <buffer> U 5<plug>UndotreeNextState
+    nmap <buffer> E 5<plug>UndotreePreviousState
 endfunc
 
 
@@ -200,11 +200,11 @@ let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+            \   "function": "\uf794",
+            \   "variable": "\uf71b",
+            \  }
 function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
+    return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 "set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
@@ -221,6 +221,7 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 "== vim-autoformat ----------------------------------
 "--
 nnoremap <leader>fo :Autoformat<CR>
+" au BufWrite * :Autoformat    " 自动格式化
 "let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; eslint --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
 "let g:formatters_javascript = ['eslint']
 "let g:formatdef_my_html = '"html-beautify -s 2"'
@@ -233,7 +234,7 @@ nnoremap <leader>fo :Autoformat<CR>
 vmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 if !exists('g:easy_align_delimiters')
-  let g:easy_align_delimiters = {}
+    let g:easy_align_delimiters = {}
 endif
 let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
 
@@ -243,22 +244,22 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 "== rainbow_parentheses ----------------------------------
 "--
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 " 不加入这行, 防止黑色括号出现, 很难识别
 " \ ['black',       'SeaGreen3'],
 let g:rbpt_max = 16
@@ -303,8 +304,8 @@ map <leader>gy :Goyo<CR>
 "==
 "== vim-expand-region
 "==
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
+" vmap v <Plug>(expand_region_expand)
+" vmap V <Plug>(expand_region_shrink)
 
 
 "==
@@ -447,21 +448,21 @@ let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
+    redir => list
+    silent ls
+    redir END
+    return split(list, "\n")
 endfunction
 
 function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+    execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
 command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-\ }))
+            \ 'source': s:list_buffers(),
+            \ 'sink*': { lines -> s:delete_buffers(lines) },
+            \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+            \ }))
 
 "noremap <c-d> :BD<CR>
 
@@ -489,16 +490,16 @@ map z/ <Plug>(incsearch-fuzzy-/)
 "noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 "noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 "搜素当前buffer的代码
-"noremap <c-f> :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR> 
+"noremap <c-f> :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 
 "--
 "== ctrlsf ----------------------------------
 "--
-"noremap <LEADER>f :CtrlSF 
+"noremap <LEADER>f :CtrlSF
 "let g:ctrlsf_auto_focus = {
-    "\ "at": "start"
-    "\ }
+            "\ "at": "start"
+            "\ }
 
 
 "--
@@ -506,8 +507,8 @@ map z/ <Plug>(incsearch-fuzzy-/)
 "--
 "noremap <LEADER>ff :F  **/*<left><left><left><left><left>
 "let g:far#mapping = {
-		"\ "replace_undo" : ["l"],
-		"\ }
+            "\ "replace_undo" : ["l"],
+            "\ }
 
 
 
@@ -533,12 +534,12 @@ let g:loaded_matchit = 1
 "--
 "== easymotion ----------------------------------
 "--
-"两个字符 
+"两个字符
 "nmap ff <Plug>(easymotion-s2)
-"单个字符 
+"单个字符
 nmap ff <Plug>(easymotion-bd-f)
 "移动到列
-"nmap s <Plug>(easymotion-bd-jk)   
+"nmap s <Plug>(easymotion-bd-jk)
 "任意字符
 nmap fff <Plug>(easymotion-sn)
 "/替换成easymotion
@@ -663,14 +664,14 @@ vmap  <Leader>rrrrr <Plug>DictRVSearch
 ""--
 "let g:vimspector_enable_mappings = 'HUMAN'
 "function! s:read_template_into_buffer(template)
-"	" has to be a function to avoid the extra space fzf#run insers otherwise
-"	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+"   " has to be a function to avoid the extra space fzf#run insers otherwise
+"   execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
 "endfunction
 "command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-"			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-"			\   'down': 20,
-"			\   'sink': function('<sid>read_template_into_buffer')
-"			\ })
+"           \   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+"           \   'down': 20,
+"           \   'sink': function('<sid>read_template_into_buffer')
+"           \ })
 "noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 "sign define vimspectorBP text=☛ texthl=Normal
 "sign define vimspectorBPDisabled text=☞ texthl=Normal
