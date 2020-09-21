@@ -135,7 +135,7 @@ noremap W :w<CR>
 noremap <LEADER>q <C-w>j:q<CR>
 noremap U <C-r>
 noremap u :u<CR>
-" nnoremap ; :
+nnoremap ; :
 vnoremap ; :
 inoremap jj <Esc>
 noremap H ^
@@ -343,7 +343,8 @@ else
   endf
 endif
 if has("unix")
-    set shell=\"/usr/bin/zsh"\ -f
+    " set shell=\"/usr/bin/zsh"\ -f
+    set shell=\"/usr/bin/bash"\ -f
 endif
 tnoremap <c-q> <c-\><c-n>
 "set shell=\"/usr/bin/fish"\ -f
