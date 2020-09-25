@@ -1,4 +1,3 @@
-set fish_greeting 'Talk is cheap.Show me the code.'
 #thefuck --alias | source
 alias tran='trans -sp en:zh'
 alias neo='neofetch'
@@ -30,7 +29,9 @@ alias gs='git status'
 alias gc='git commit'
 alias gl='tig'
 alias gp='git push -u origin master'
-# alias caj='~/Downloads/CAJViewer-x86_64-libc-2.24.AppImage'
+alias ghub='git push github master'
+alias gee='git push gitee master'
+alias gall='git push gitee master && git push github master'
 alias tm='tmux'
 alias q='exit'
 alias sudo='sudo -E'
@@ -56,8 +57,11 @@ end
 set -g -x RANGER_LOAD_DEFAULT_RC FALSE
 
 
-
-#欢迎语
-# clear
-# cowsay  talk is cheap,show me the code | lolcat
-# cd
+# man color
+# set -x LESS_TERMCAP_mb (printf "\e[01;31m")
+# set -x LESS_TERMCAP_md (printf "\e[01;31m")
+# set -x LESS_TERMCAP_me (printf "\e[0m")
+# set -x LESS_TERMCAP_se (printf "\e[0m")
+# set -x LESS_TERMCAP_so (printf "\e[01;44;33m")
+# set -x LESS_TERMCAP_ue (printf "\e[0m")
+# set -x LESS_TERMCAP_us (printf "\e[01;32m")

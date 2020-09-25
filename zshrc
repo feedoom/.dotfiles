@@ -242,7 +242,6 @@ alias gs='git status'
 alias gc='git commit'
 alias gl='tig'
 alias gp='git push -u origin master'
-# alias caj='~/Downloads/CAJViewer-x86_64-libc-2.24.AppImage'
 alias tm='tmux'
 alias q='exit'
 alias sudo='sudo -E'
@@ -259,9 +258,3 @@ alias open='explorer.exe .'
 #欢迎语
 # clear
 cowsay  talk is cheap,show me the code | lolcat
-# cd
-
-# export CLASSPATH=/home/feedoom/code/algorithms/lib/stdlib.jar
-# alias javac='javac -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
-# alias java='java -cp :/home/feedoom/code/algorithms/lib/stdlib.jar'
-
