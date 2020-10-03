@@ -35,6 +35,8 @@ func! CompileRunGcc()
 		exec "MarkdownPreview"
     elseif &filetype == 'javascript'
         exec "!node %<.js"
+    elseif &filetype == 'typescript'
+        exec "!ts-node %<.ts"
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
