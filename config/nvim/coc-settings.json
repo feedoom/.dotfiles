@@ -2,7 +2,7 @@
     "snippets.userSnippetsDirectory": "~/.config/nvim/Ultisnips/",
     "yank.enableCompletion" : false,
     "explorer.openAction.changeDirector": true,
-    "explorer.width": 38,
+    "explorer.width": 25,
     "explorer.quitOnOpen": true,
     "explorer.sources": [
         {
