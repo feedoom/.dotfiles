@@ -8,6 +8,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ryanoasis/vim-devicons'
 "Plug 'itchyny/lightline.vim'
 "Plug 'liuchengxu/eleline.vim'
+Plug 'ojroques/vim-scrollstatus'
 Plug 'bling/vim-bufferline'
 Plug 'mg979/vim-xtabline'
 Plug 'theniceboy/eleline.vim'
@@ -28,11 +29,6 @@ Plug 'dracula/vim'
 
 
 "autocomplete
-"Plugin 'jayli/vim-easycomplete'
-"Plugin 'jayli/vim-dictionary'
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'tenfyzhong/CompleteParameter.vim'
-"Plug 'maralla/completor.vim'
 " Plug 'artur-shaik/vim-javacomplete2'                                "java autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -87,10 +83,14 @@ Plug 'tpope/vim-speeddating'                                        " 递增减
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-expand-region'                                    " +,_,增加可视模式选择的文本
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'wellle/context.vim'                                           " 显示上下文
+Plug 'chrisbra/NrrwRgn'                                             " 固定内容
+Plug 'theniceboy/antovim'                                           " gs取反义词
+Plug 'wellle/visual-split.vim'                                      " 将文本固定到分屏上
 
 
 "textobj
-Plug 'kana/vim-textobj-user'                                        " 文本对象 
+Plug 'kana/vim-textobj-user'                                        " 文本对象
 Plug 'kana/vim-textobj-line'                                        " 行文本对象
 Plug 'coderifous/textobj-word-column.vim'                           " 列文本对象
 Plug 'junegunn/vim-after-object'                                    " -, :, #, =
@@ -127,10 +127,10 @@ Plug 'osyo-manga/vim-anzu'                                          " 显示当�
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 "Plug 'cohama/agit.vim'                                               " git历史查看
-Plug 'junegunn/gv.vim'
+" Plug 'junegunn/gv.vim'
 " Plug 'jreybert/vimagit'                                             " 查看git暂存区
 "Plug 'kablamo/vim-git-log'                                           " git log
-Plug 'junkblocker/git-time-lapse'                                   " 当前文件 git diff
+" Plug 'junkblocker/git-time-lapse'                                   " 当前文件 git diff
 
 
 "move
@@ -152,17 +152,13 @@ Plug 'AndrewRadev/linediff.vim'                                     " 两个代�
 
 
 " translator
-Plug 'iamcco/dict.vim'
+" Plug 'iamcco/dict.vim'
 "Plug 'VincentCordobes/vim-translate'
 "Plug 'voldikss/vim-translator'
 
 
 "Error checking
 "Plug 'dense-analysis/ale'
-
-
-" debug
-" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --force-enable-java --force-enable-chrome'}
 
 
 "输入法
@@ -181,14 +177,12 @@ Plug 'sheerun/vim-polyglot'                                         " 语法扩�
 Plug 'KabbAmine/vCoolor.vim'                                        " 调色板
 Plug 'voldikss/vim-codelf'                                          " 变量命名
 Plug 'mhinz/vim-startify'                                           " 开始页面
-" Plug 'airblade/vim-rooter'                                          " 切换项目根目录 
+" Plug 'airblade/vim-rooter'                                          " 切换项目根目录
 Plug 'skywind3000/quickmenu.vim'                                    " 帮助菜单
 Plug 'makerj/vim-pdf'
 Plug 'DataWraith/auto_mkdir'                                        " 自动创建中间的目录结构
-Plug 'wellle/visual-split.vim'                                      " 将文本固定到分屏上
 Plug 'tpope/vim-unimpaired'                                         " []代替互补的快捷键,如[b,]b代替bn,bp
 " Plug 'mtth/scratch.vim'                                             " 临时buffer
-" Plug 'Ron89/thesaurus_query.vim'                                    " 近义词查找
 Plug 'voldikss/vim-floaterm'                                        " 悬浮终端
 Plug 'junegunn/vim-peekaboo'                                        " 寄存器
 " Plug 'ianding1/leetcode.vim'
@@ -197,14 +191,8 @@ Plug 'junegunn/vim-peekaboo'                                        " 寄存器
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'hotoo/pangu.vim'                                               " 中文排版
 "Plug 'pechorin/any-jump.vim'
-"Plug 'jceb/vim-orgmode'
-"Plug 'vimwiki/vimwiki'
-"Plug 'hiberabyss/NeovimGdb'
 "Plug 'KabbAmine/zeavim.vim'                                          " 文档
-" Plug 'TimothyYe/vim-ydict'
 " Plug 'vim-ctrlspace/vim-ctrlspace'
-Plug 'nightsense/cosmic_latte'
-Plug 'nightsense/stellarized'
 
 call plug#end()
 

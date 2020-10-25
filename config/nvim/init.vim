@@ -141,9 +141,25 @@ inoremap jj <Esc>
 noremap H ^
 nnoremap L g_
 vnoremap L g_
+
+
+"插入模式下移动 
+inoremap <c-l> <right>
+inoremap <c-h> <Left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+
+
+"光标行移动
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
 "ctrl j,ctrl k,上下移动5行
 noremap <C-k> 5<C-y>
 noremap <C-j> 5<C-e>
+
+
 "clipboard system
 vnoremap Y "+y
 "alt+u转换大小写
@@ -153,17 +169,11 @@ inoremap <C-u> <esc>b~ea
 noremap fi :r !figlet 
 "z= 显示建议
 noremap <leader>sp :set spell!<CR> 
-nnoremap < <<
-nnoremap > >>
 " 去掉搜索高亮
 noremap <silent><F3> :nohls<CR>
 noremap <silent><space> :nohls<CR>
 set pastetoggle=<F2> "F2进入粘贴模式
-" 添加空行
-nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-"添加日期
-imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
+
 
 " 标签页 
 nnoremap tn :tabnext<CR>
@@ -182,6 +192,7 @@ function Switchsplit()
 endfunction
 map trs :call Switchsplit()<cr>
 
+
 " 窗口
 "向下分屏，光标在上屏
 noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR> 
@@ -196,15 +207,12 @@ noremap <C-up> :res +5<CR>
 noremap <C-down> :res -5<CR>
 noremap <C-left> :vertical resize-5<CR>
 noremap <C-right> :vertical resize+5<CR>
-"切换窗口 
+"切换窗口
 map <Down> <C-W>j
 map <Up> <C-W>k
 map <Left> <C-W>h
 map <Right> <C-W>l
-"map <c-j> <C-W>j
-"map <c-k> <C-W>k
-"map <c-h> <C-W>h
-"map <c-l> <C-W>l
+" 切换窗口
 map <leader>j <C-W>j
 map <leader>k <C-W>k
 map <leader>h <C-W>h
@@ -213,6 +221,29 @@ map <leader>l <C-W>l
 noremap srh <C-w>t<C-w>K
 " Place the two screens side by side
 noremap srv <C-w>t<C-w>H
+
+
+"搜索结果居中展示
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+
+" 调整缩进后自动选中，方便再次操作
+nnoremap < <<
+nnoremap > >>
+vnoremap < <gv
+vnoremap > >gv
+
+" 选中并高亮最后一次插入的内容
+nnoremap gv `[v`]
+" select block
+nnoremap <leader>v V`}
+
+
+
 "将当前分屏的窗口转换到一个新的tab
 function Switchtab()
     let path=expand('%:p')
@@ -220,6 +251,7 @@ function Switchtab()
     exec 'tabe '.path
 endfunction
 map srt :call Switchtab()<cr>
+
 
 "sudo 写入
 if has('nvim')
@@ -230,18 +262,6 @@ else
   cnoreabbrev sw :w !sudo tee %<CR>
 endif
 
-"插入模式下移动 
-inoremap <c-l> <right>
-inoremap <c-h> <Left>
-inoremap <c-j> <down>
-inoremap <c-k> <up>
-"emacs key
-"inoremap <m-b> <c-left>
-"inoremap <m-f> <c-right>
-"inoremap <c-b> <left>
-"inoremap <c-f> <right>
-"inoremap <c-n> <down>
-"inoremap <c-p> <up>
 
 "open my vimrc
 if has ('nvim')
@@ -251,27 +271,12 @@ else
 endif
 cnoreabbrev zshrc :e ~/.zshrc
 
-"搜索结果居中展示
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
 
-" 调整缩进后自动选中，方便再次操作
-vnoremap < <gv
-vnoremap > >gv
-
-" 选中并高亮最后一次插入的内容
-nnoremap gv `[v`]
-" select block
-nnoremap <leader>v V`}
-
-"光标行移动
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
+" 添加空行
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+"添加日期
+imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 
 
 " 普通模式下高亮当前行,插入模式不高亮

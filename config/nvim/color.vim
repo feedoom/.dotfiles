@@ -58,3 +58,9 @@ nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " statusline
 set statusline=%{anzu#search_status()}
+
+
+"==
+"== vim-scrollstatus
+"==
+let g:scrollstatus_size = 10
