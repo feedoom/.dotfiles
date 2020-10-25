@@ -1,103 +1,82 @@
 {
   "files.autoSave": "off",
   "window.zoomLevel": -1,
-
   "editor.renameOnType": true,
   "editor.cursorSurroundingLines": 7,
   "editor.lineNumbers": "relative",
   "editor.wordWrap": "on",
   "editor.fontSize": 20,
   "editor.fontFamily": "'Source Code Pro'",
+  "editor.fontFamily": "'SauceCodePro Nerd Font Mono'",
+  // "editor.fontFamily": "'Source Code Pro'",
   // "editor.fontFamily": "'monospace'",
   "editor.tabCompletion": "on",
-  "editor.quickSuggestions": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "editor.parameterHints.enabled": true,
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "none",
-
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "One Dark Pro",
-
   // emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "javascript": "html"
+    "javascript": "html",
+    "wxml": "html"
   },
-
   "terminal.integrated.fontFamily": "'Source Code Pro Medium'",
   //"terminal.integrated.shell.linux": "/usr/bin/zsh",
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
-
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "java.semanticHighlighting.enabled": true,
-
   //不要高亮相同的单词
   "editor.occurrencesHighlight": false,
-
   //右边的导航大纲
   "editor.minimap.enabled": false,
-
   //导航路径
   "breadcrumbs.enabled": true,
-
   //空格可见
   //"editor.renderWhitespace": "all",
-
   //文件末尾另起一行
   "files.insertFinalNewline": true,
-
   //剪裁尾部空格
   "files.trimTrailingWhitespace": true,
-
   //忽略文件
   "files.exclude": {
     "**/.history": true,
     "**/node_modules": true
   },
-
   "latex-workshop.view.pdf.viewer": "external",
-
   //自动格式化
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
-
   //图标
   "workbench.iconTheme": "vscode-great-icons",
-
   //clipboard manager
   "clipboard-manager.maxClips": 100,
   "clipboard-manager.preview": false,
   "clipboard-manager.snippet.enabled": false,
-
   //liveServer
   "liveServer.settings.donotShowInfoMsg": true,
-
   //leetcode
   "leetcode.endpoint": "leetcode-cn",
-
+  "leetcode.defaultLanguage": "javascript",
+  "leetcode.showCommentDescription": true,
   "translator.translateOnHover": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "cSpell.userWords": ["lsdjfslf"],
-
   //todo tree
   "todo-tree.tree.showScanModeButton": false,
-
   //sync
   "sync.gist": "142e96bf6cf128e420a00d0c51bb87df",
   "sync.autoDownload": false,
   "sync.autoUpload": false,
   "sync.quietSync": true,
   "sync.forceUpload": true,
-
-  //eslint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-
   //vim
   // vim输入法
   "vim.timeout": 2000,
@@ -149,7 +128,7 @@
       "after": ["<Esc>", "b", "~", "e", "a"]
     },
     {
-      "before": ["<a-u>"],
+      "before": ["<A-u>"],
       "commands": ["editor.action.transformToUppercase"]
     }
   ],
@@ -225,6 +204,22 @@
     {
       "before": ["<leader>", "/"],
       "after": ["g", "c", "c"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "after": ["<c-w>", "l"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "after": ["<c-w>", "h"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "after": ["<c-w>", "j"]
+    },
+    {
+      "before": ["<leader>", "k"],
+      "after": ["<c-w>", "k"]
     },
     {
       "before": ["f", "f"],
@@ -382,18 +377,6 @@
       "commands": ["wwm.aligncode"]
     }
   ],
-  "[javascript]": {
-    // "editor.defaultFormatter": "vscode.typescript-language-features",
-    //prettier
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    // "editor.defaultFormatter": "vscode.typescript-language-features",
-    //prettier
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "latex-workshop.latex.recipes": [
     {
       "name": "xelatex",
@@ -420,5 +403,59 @@
       "command": "bibtex",
       "args": ["%DOCFILE%"]
     }
-  ]
+  ],
+  "rss.accounts": {
+    "e6c8c470-f9b7-11ea-9255-653dbba42b69": {
+      "name": "Default",
+      "type": "local",
+      "feeds": []
+    }
+  },
+  // "[javascript]": {
+  //prettier
+  // "editor.tabSize": 2,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[html]": {
+  //prettier
+  // "editor.tabSize": 2,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // eslint
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
+  //
+  //
+  "eslint.enable": true,
+  "eslint.options": {
+    "extensions": [".js", ".vue", ".ts", ".tsx"]
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "vue",
+    "html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "vetur.format.defaultFormatter.html": "prettier",
+  "workbench.sideBar.location": "right",
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "leetcode.workspaceFolder": "d:\\code\\source\\leetcode",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.hint.commentDescription": false,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
