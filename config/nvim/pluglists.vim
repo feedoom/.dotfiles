@@ -83,7 +83,7 @@ Plug 'tpope/vim-speeddating'                                        " 递增减
 Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-expand-region'                                    " +,_,增加可视模式选择的文本
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'wellle/context.vim'                                           " 显示上下文
+" Plug 'wellle/context.vim'                                           " 显示上下文
 Plug 'chrisbra/NrrwRgn'                                             " 固定内容
 Plug 'theniceboy/antovim'                                           " gs取反义词
 Plug 'wellle/visual-split.vim'                                      " 将文本固定到分屏上

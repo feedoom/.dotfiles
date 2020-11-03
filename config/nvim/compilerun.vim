@@ -36,7 +36,8 @@ func! CompileRunGcc()
     elseif &filetype == 'javascript'
         exec "!node %<.js"
     elseif &filetype == 'typescript'
-        exec "!ts-node %<.ts"
+		exec "!tsc %"
+        exec "!node %<.js"
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"

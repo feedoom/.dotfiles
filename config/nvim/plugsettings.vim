@@ -300,6 +300,13 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 map <leader>gy :Goyo<CR>
 
 
+"--
+"== context.vim ----------------------------------
+"--
+let g:context_presenter = 'preview'
+let g:context_add_mappings = 0
+
+
 "==
 "== vim-expand-region
 "==

@@ -196,6 +196,7 @@ transfer() {
 }
 alias transfer=transfer
 
+export PATH=$PATH:$HOME/.cargo/bin
 
 eval "$(thefuck --alias)"
 export TERM=xterm-256color

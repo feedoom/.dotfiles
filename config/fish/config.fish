@@ -4,8 +4,8 @@ alias neo='neofetch'
 alias one='onefetch'
 alias manl='tldr'
 #alias ls='lsd'
-# alias ls='exa --colour always --icons'
-# alias la='exa --colour always --icons -a'
+alias ls='exa --colour always --icons'
+alias la='exa --colour always --icons -a'
 alias hei='cmatrix'
 alias cd1='cd ../'
 alias cd.='cd ../'
@@ -45,6 +45,8 @@ alias open='explorer.exe .'
 # alias cat='ccat'
 
 export EDITOR=nvim
+
+set -x PATH /home/feedoom/.cargo/bin /bin:/usr/bin
 
 
 begin
