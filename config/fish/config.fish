@@ -46,7 +46,7 @@ alias open='explorer.exe .'
 
 export EDITOR=nvim
 
-set -x PATH /home/feedoom/.cargo/bin /bin:/usr/bin
+set -x PATH /home/feedoom/.cargo/bin /bin:/usr/bin /usr/local/bin
 
 
 begin

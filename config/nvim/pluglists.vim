@@ -87,6 +87,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'                                             " 固定内容
 Plug 'theniceboy/antovim'                                           " gs取反义词
 Plug 'wellle/visual-split.vim'                                      " 将文本固定到分屏上
+Plug 'gcmt/wildfire.vim'                                            " enter 快速选择文本
 
 
 "textobj
