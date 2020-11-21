@@ -163,9 +163,9 @@ noremap <C-j> 5<C-e>
 "clipboard system
 vnoremap Y "+y
 "alt+u转换大小写
-inoremap <a-u> <esc>bvE~ea
+inoremap <c-u> <esc>bvE~ea
 "转换首单词大小写
-inoremap <C-u> <esc>b~ea
+" inoremap <C-u> <esc>b~ea
 noremap fi :r !figlet 
 "z= 显示建议
 noremap <leader>sp :set spell!<CR> 
@@ -395,16 +395,3 @@ source ~/.config/nvim/color.vim
 
 source ~/.config/nvim/plugsettings.vim
 
-
-noremap <C-h> <left>
-noremap <C-j> <down>
-noremap <C-k> <up>
-noremap <C-l> <right>
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-cnoremap <c-h> <left>
-cnoremap <c-j> <down>
-cnoremap <c-k> <up>
-cnoremap <c-l> <right>
